@@ -1,14 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbtk33ypckjjh"]
+[gd_scene load_steps=19 format=3 uid="uid://dbtk33ypckjjh"]
 
 [ext_resource type="Material" uid="uid://cu4utl0yjg4dg" path="res://textures/materials/celingMaterial1.tres" id="1_3rpod"]
-[ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
 [ext_resource type="Script" uid="uid://c1xbobwkhqjvu" path="res://ChaseHeart.gd" id="1_pau2p"]
+[ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
 [ext_resource type="Script" uid="uid://cj0jp3sy54cmm" path="res://EdgePointScript.gd" id="2_eacex"]
 [ext_resource type="Script" uid="uid://c6wi1xkwwwlkf" path="res://LightController.gd" id="2_g8fis"]
 [ext_resource type="Script" uid="uid://t2w34rjrl1sm" path="res://PartyLightArray.gd" id="2_n7rl0"]
 [ext_resource type="Script" uid="uid://dfyfw54dyp73u" path="res://PartyLight.gd" id="3_kb5x2"]
 [ext_resource type="ArrayMesh" uid="uid://bhnrcchged64n" path="res://low_poly_heart.obj" id="4_20ugn"]
 [ext_resource type="Script" uid="uid://bj1ooqu8y8cgv" path="res://AudioAnalyzer.gd" id="5_pjjw4"]
+[ext_resource type="Script" uid="uid://ckobbdog5livv" path="res://PivotPoint.gd" id="9_sh5jk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ue1jw"]
 
@@ -305,6 +306,7 @@ size = Vector3(4, 0.2, 30)
 material = SubResource("StandardMaterial3D_n7rl0")
 
 [node name="ChaseHeart" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
 script = ExtResource("1_pau2p")
 
 [node name="LightController" type="Node3D" parent="ChaseHeart"]
@@ -579,7 +581,6 @@ bus = &"Mic"
 script = ExtResource("5_pjjw4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ChaseHeart"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
 mesh = ExtResource("4_20ugn")
 skeleton = NodePath("")
 
@@ -603,6 +604,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
 
 [node name="PivotPoint" type="Area3D" parent="TrackPoint1" groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("9_sh5jk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/PivotPoint"]
 shape = SubResource("SphereShape3D_ue1jw")

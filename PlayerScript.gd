@@ -3,7 +3,7 @@ class_name PlayerScript
 
 @export var speed: float = 6.0
 @export var in_corner: bool = false
-@export var turn_time: float = 0.25
+@export var turn_time: float = 1
 @export var roll_enabled: bool = true
 @export var roll_speed_deg_per_sec: float = 35.0  # constant roll rate
 var _roll_angle: float = 0.0
