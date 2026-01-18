@@ -1,0 +1,8 @@
+DirectionalLight3D
+AudioStreamPlayer
+Node3D
+SpotLight3D
+CSGSphere3D
+CollisionShape3D
+Area3D
+Marker3D
