@@ -35,10 +35,16 @@ func _ready() -> void:
 		return a.get_base_distance_from_focus() < b.get_base_distance_from_focus())		
 	
 	var light_orientation:float = 1
+	var last_distance: float = -1.0
+	var distance_epsilon: float = 0.0001
 	
 	for light in lights:
+		var distance = light.get_base_distance_from_focus()
+		if last_distance < 0.0 or abs(distance - last_distance) > distance_epsilon:
+			if last_distance >= 0.0:
+				light_orientation *= -1
+			last_distance = distance
 		light.set_rotation_orientation(light_orientation)
-		light_orientation = light_orientation * -1
 		
 	# Push initial values into the rig + children
 	_emit_all()
