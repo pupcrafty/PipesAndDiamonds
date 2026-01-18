@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbtk33ypckjjh"]
+[gd_scene load_steps=15 format=3 uid="uid://dbtk33ypckjjh"]
 
 [ext_resource type="Material" uid="uid://cu4utl0yjg4dg" path="res://textures/materials/celingMaterial1.tres" id="1_3rpod"]
 [ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://c6wi1xkwwwlkf" path="res://LightController.gd" id="2_g8fis"]
 [ext_resource type="Script" uid="uid://t2w34rjrl1sm" path="res://PartyLightArray.gd" id="2_n7rl0"]
 [ext_resource type="Script" uid="uid://dfyfw54dyp73u" path="res://PartyLight.gd" id="3_kb5x2"]
-[ext_resource type="ArrayMesh" uid="uid://bhnrcchged64n" path="res://low_poly_heart.obj" id="4_20ugn"]
 [ext_resource type="Script" uid="uid://bj1ooqu8y8cgv" path="res://AudioAnalyzer.gd" id="5_pjjw4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ue1jw"]
@@ -20,11 +19,9 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rm6c6"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ue1jw"]
-
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_g8fis"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_w3kui"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ue1jw"]
 
 [node name="Hallway" type="Node3D"]
 
@@ -312,7 +309,279 @@ script = ExtResource("1_ue1jw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("SphereShape3D_rm6c6")
 
+[node name="LightController" type="Node3D" parent="Player"]
+script = ExtResource("2_g8fis")
+
+[node name="GreenLightArray" type="Node3D" parent="Player/LightController"]
+script = ExtResource("2_n7rl0")
+
+[node name="Green1" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.99680173, -0.07991469, 0, 0.07991469, 0.99680173, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green2" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(0.99680173, 0, 0.07991469, 0, 1, 0, -0.07991469, 0, 0.99680173, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green3" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.99680173, 0.07991469, 0, -0.07991469, 0.99680173, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green4" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(0.99680173, 0, -0.07991469, 0, 1, 0, 0.07991469, 0, 0.99680173, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green5" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.98722726, -0.15931821, 0, 0.15931821, 0.98722726, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green6" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(0.98722726, 0, 0.15931821, 0, 1, 0, -0.15931821, 0, 0.98722726, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green7" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.98722726, 0.15931821, 0, -0.15931821, 0.98722726, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green8" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(0.98722726, 0, -0.15931821, 0, 1, 0, 0.15931821, 0, 0.98722726, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green9" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.971338, -0.23770262, 0, 0.23770262, 0.971338, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green10" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(0.971338, 0, 0.23770262, 0, 1, 0, -0.23770262, 0, 0.971338, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green11" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.971338, 0.23770262, 0, -0.23770262, 0.971338, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green12" type="SpotLight3D" parent="Player/LightController/GreenLightArray"]
+transform = Transform3D(0.971338, 0, -0.23770262, 0, 1, 0, 0.23770262, 0, 0.971338, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="BlueLightArray" type="Node3D" parent="Player/LightController"]
+script = ExtResource("2_n7rl0")
+
+[node name="Blue1" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.99680173, -0.07991469, 0, 0.07991469, 0.99680173, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue2" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(0.99680173, 0, 0.07991469, 0, 1, 0, -0.07991469, 0, 0.99680173, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue3" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.99680173, 0.07991469, 0, -0.07991469, 0.99680173, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue4" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(0.99680173, 0, -0.07991469, 0, 1, 0, 0.07991469, 0, 0.99680173, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue5" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.98722726, -0.15931821, 0, 0.15931821, 0.98722726, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue6" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(0.98722726, 0, 0.15931821, 0, 1, 0, -0.15931821, 0, 0.98722726, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue7" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.98722726, 0.15931821, 0, -0.15931821, 0.98722726, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue8" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(0.98722726, 0, -0.15931821, 0, 1, 0, 0.15931821, 0, 0.98722726, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue9" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.971338, -0.23770262, 0, 0.23770262, 0.971338, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue10" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(0.971338, 0, 0.23770262, 0, 1, 0, -0.23770262, 0, 0.971338, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue11" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.971338, 0.23770262, 0, -0.23770262, 0.971338, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue12" type="SpotLight3D" parent="Player/LightController/BlueLightArray"]
+transform = Transform3D(0.971338, 0, -0.23770262, 0, 1, 0, 0.23770262, 0, 0.971338, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="RedLightArray" type="Node3D" parent="Player/LightController"]
+script = ExtResource("2_n7rl0")
+
+[node name="Red1" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.99680173, -0.07991469, 0, 0.07991469, 0.99680173, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red2" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(0.99680173, 0, 0.07991469, 0, 1, 0, -0.07991469, 0, 0.99680173, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red3" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.99680173, 0.07991469, 0, -0.07991469, 0.99680173, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red4" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(0.99680173, 0, -0.07991469, 0, 1, 0, 0.07991469, 0, 0.99680173, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red5" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.98722726, -0.15931821, 0, 0.15931821, 0.98722726, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red6" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(0.98722726, 0, 0.15931821, 0, 1, 0, -0.15931821, 0, 0.98722726, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red7" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.98722726, 0.15931821, 0, -0.15931821, 0.98722726, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red8" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(0.98722726, 0, -0.15931821, 0, 1, 0, 0.15931821, 0, 0.98722726, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red9" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.971338, -0.23770262, 0, 0.23770262, 0.971338, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red10" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(0.971338, 0, 0.23770262, 0, 1, 0, -0.23770262, 0, 0.971338, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red11" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 0.971338, 0.23770262, 0, -0.23770262, 0.971338, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red12" type="SpotLight3D" parent="Player/LightController/RedLightArray"]
+transform = Transform3D(0.971338, 0, -0.23770262, 0, 1, 0, 0.23770262, 0, 0.971338, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="MicPlayer" type="AudioStreamPlayer" parent="Player/LightController"]
+stream = SubResource("AudioStreamMicrophone_g8fis")
+autoplay = true
+bus = &"Mic"
+script = ExtResource("5_pjjw4")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
+transform = Transform3D(0.8660254, -0.08682409, 0.49240386, 0, 0.9848077, 0.17364818, -0.5, -0.15038373, 0.8528685, 0, 0, 0)
+visible = false
 
 [node name="TrackPoint1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
@@ -553,288 +822,6 @@ script = ExtResource("2_eacex")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/EdgePointZAxis"]
 shape = SubResource("SphereShape3D_ue1jw")
-
-[node name="ChaseHeart" type="CharacterBody3D" parent="."]
-
-[node name="LightController" type="Node3D" parent="ChaseHeart"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("2_g8fis")
-
-[node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController"]
-script = ExtResource("2_n7rl0")
-
-[node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.99680173, -0.07991469, 0, 0.07991469, 0.99680173, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(0.99680173, 0, 0.07991469, 0, 1, 0, -0.07991469, 0, 0.99680173, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green3" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.99680173, 0.07991469, 0, -0.07991469, 0.99680173, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green4" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(0.99680173, 0, -0.07991469, 0, 1, 0, 0.07991469, 0, 0.99680173, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green5" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.98722726, -0.15931821, 0, 0.15931821, 0.98722726, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green6" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(0.98722726, 0, 0.15931821, 0, 1, 0, -0.15931821, 0, 0.98722726, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green7" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.98722726, 0.15931821, 0, -0.15931821, 0.98722726, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green8" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(0.98722726, 0, -0.15931821, 0, 1, 0, 0.15931821, 0, 0.98722726, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green9" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.971338, -0.23770262, 0, 0.23770262, 0.971338, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green10" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(0.971338, 0, 0.23770262, 0, 1, 0, -0.23770262, 0, 0.971338, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green11" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.971338, 0.23770262, 0, -0.23770262, 0.971338, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Green12" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
-transform = Transform3D(0.971338, 0, -0.23770262, 0, 1, 0, 0.23770262, 0, 0.971338, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController"]
-script = ExtResource("2_n7rl0")
-
-[node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.99680173, -0.07991469, 0, 0.07991469, 0.99680173, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(0.99680173, 0, 0.07991469, 0, 1, 0, -0.07991469, 0, 0.99680173, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue3" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.99680173, 0.07991469, 0, -0.07991469, 0.99680173, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue4" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(0.99680173, 0, -0.07991469, 0, 1, 0, 0.07991469, 0, 0.99680173, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue5" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.98722726, -0.15931821, 0, 0.15931821, 0.98722726, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue6" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(0.98722726, 0, 0.15931821, 0, 1, 0, -0.15931821, 0, 0.98722726, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue7" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.98722726, 0.15931821, 0, -0.15931821, 0.98722726, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue8" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(0.98722726, 0, -0.15931821, 0, 1, 0, 0.15931821, 0, 0.98722726, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue9" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.971338, -0.23770262, 0, 0.23770262, 0.971338, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue10" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(0.971338, 0, 0.23770262, 0, 1, 0, -0.23770262, 0, 0.971338, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue11" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.971338, 0.23770262, 0, -0.23770262, 0.971338, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Blue12" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
-transform = Transform3D(0.971338, 0, -0.23770262, 0, 1, 0, 0.23770262, 0, 0.971338, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController"]
-script = ExtResource("2_n7rl0")
-
-[node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.99680173, -0.07991469, 0, 0.07991469, 0.99680173, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(0.99680173, 0, 0.07991469, 0, 1, 0, -0.07991469, 0, 0.99680173, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red3" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.99680173, 0.07991469, 0, -0.07991469, 0.99680173, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red4" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(0.99680173, 0, -0.07991469, 0, 1, 0, 0.07991469, 0, 0.99680173, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red5" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.98722726, -0.15931821, 0, 0.15931821, 0.98722726, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red6" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(0.98722726, 0, 0.15931821, 0, 1, 0, -0.15931821, 0, 0.98722726, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red7" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.98722726, 0.15931821, 0, -0.15931821, 0.98722726, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red8" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(0.98722726, 0, -0.15931821, 0, 1, 0, 0.15931821, 0, 0.98722726, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red9" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.971338, -0.23770262, 0, 0.23770262, 0.971338, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red10" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(0.971338, 0, 0.23770262, 0, 1, 0, -0.23770262, 0, 0.971338, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red11" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(1, 0, 0, 0, 0.971338, 0.23770262, 0, -0.23770262, 0.971338, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="Red12" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
-transform = Transform3D(0.971338, 0, -0.23770262, 0, 1, 0, 0.23770262, 0, 0.971338, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-spot_range = 30.0
-spot_angle = 5.0
-script = ExtResource("3_kb5x2")
-
-[node name="MicPlayer" type="AudioStreamPlayer" parent="ChaseHeart/LightController"]
-stream = SubResource("AudioStreamMicrophone_g8fis")
-autoplay = true
-bus = &"Mic"
-script = ExtResource("5_pjjw4")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ChaseHeart"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
-mesh = ExtResource("4_20ugn")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseHeart"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
-shape = SubResource("SphereShape3D_w3kui")
 
 [connection signal="body_entered" from="TrackPoint1/EdgePointXAxis" to="TrackPoint1/EdgePointXAxis" method="_on_body_entered"]
 [connection signal="body_exited" from="TrackPoint1/EdgePointXAxis" to="TrackPoint1/EdgePointXAxis" method="_on_body_exited"]

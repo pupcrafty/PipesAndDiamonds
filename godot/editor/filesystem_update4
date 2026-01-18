@@ -1,1 +1,5 @@
 res://bus_layout.tres
+res://hallway.tscn
+res://LightController.gd
+res://EdgePointScript.gd
+res://ChaseHeart.gd

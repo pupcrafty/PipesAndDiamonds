@@ -11,7 +11,7 @@ func _ready() -> void:
 	monitoring = true
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.name != "Player":
+	if body.name != "Player" and body.name != "ChaseHeart":
 		return
 	var player :=body as PlayerScript
 	if player.in_corner:

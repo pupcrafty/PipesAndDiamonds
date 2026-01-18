@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbtk33ypckjjh"]
+[gd_scene load_steps=16 format=3 uid="uid://dbtk33ypckjjh"]
 
 [ext_resource type="Material" uid="uid://cu4utl0yjg4dg" path="res://textures/materials/celingMaterial1.tres" id="1_3rpod"]
 [ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
@@ -23,8 +23,6 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="SphereShape3D" id="SphereShape3D_ue1jw"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_g8fis"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_w3kui"]
 
 [node name="Hallway" type="Node3D"]
 
@@ -312,8 +310,6 @@ script = ExtResource("1_ue1jw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("SphereShape3D_rm6c6")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
-
 [node name="TrackPoint1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
 
@@ -554,10 +550,14 @@ script = ExtResource("2_eacex")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/EdgePointZAxis"]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="ChaseHeart" type="CharacterBody3D" parent="."]
+[node name="ChaseHeart" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ChaseHeart"]
+mesh = ExtResource("4_20ugn")
 
 [node name="LightController" type="Node3D" parent="ChaseHeart"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 script = ExtResource("2_g8fis")
 
 [node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController"]
@@ -826,15 +826,6 @@ stream = SubResource("AudioStreamMicrophone_g8fis")
 autoplay = true
 bus = &"Mic"
 script = ExtResource("5_pjjw4")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ChaseHeart"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
-mesh = ExtResource("4_20ugn")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseHeart"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
-shape = SubResource("SphereShape3D_w3kui")
 
 [connection signal="body_entered" from="TrackPoint1/EdgePointXAxis" to="TrackPoint1/EdgePointXAxis" method="_on_body_entered"]
 [connection signal="body_exited" from="TrackPoint1/EdgePointXAxis" to="TrackPoint1/EdgePointXAxis" method="_on_body_exited"]
