@@ -1,0 +1,66 @@
+# Very Low Poly Heart (extruded)
+# Front ring (CCW)
+v -0.70  1.10  0.00   # 1  left lobe peak
+v -0.30  0.85  0.00   # 2  upper-left inner
+v  0.00  0.70  0.00   # 3  notch
+v  0.30  0.85  0.00   # 4  upper-right inner
+v  0.70  1.10  0.00   # 5  right lobe peak
+v  1.00  0.40  0.00   # 6  right outer
+v  0.50 -0.40  0.00   # 7  right lower
+v  0.00 -1.20  0.00   # 8  bottom point
+v -0.50 -0.40  0.00   # 9  left lower
+v -1.00  0.40  0.00   # 10 left outer
+
+# Front center (for simple triangulation)
+v  0.00  0.10  0.00   # 11
+
+# Back ring (same order, pushed back in Z)
+v -0.70  1.10 -0.30   # 12
+v -0.30  0.85 -0.30   # 13
+v  0.00  0.70 -0.30   # 14
+v  0.30  0.85 -0.30   # 15
+v  0.70  1.10 -0.30   # 16
+v  1.00  0.40 -0.30   # 17
+v  0.50 -0.40 -0.30   # 18
+v  0.00 -1.20 -0.30   # 19
+v -0.50 -0.40 -0.30   # 20
+v -1.00  0.40 -0.30   # 21
+
+# Back center
+v  0.00  0.10 -0.30   # 22
+
+# --- Front face (10 triangles) ---
+f 11 1 2
+f 11 2 3
+f 11 3 4
+f 11 4 5
+f 11 5 6
+f 11 6 7
+f 11 7 8
+f 11 8 9
+f 11 9 10
+f 11 10 1
+
+# --- Back face (reverse winding) ---
+f 22 13 12
+f 22 14 13
+f 22 15 14
+f 22 16 15
+f 22 17 16
+f 22 18 17
+f 22 19 18
+f 22 20 19
+f 22 21 20
+f 22 12 21
+
+# --- Sides (10 quads) ---
+f 1 2 13 12
+f 2 3 14 13
+f 3 4 15 14
+f 4 5 16 15
+f 5 6 17 16
+f 6 7 18 17
+f 7 8 19 18
+f 8 9 20 19
+f 9 10 21 20
+f 10 1 12 21

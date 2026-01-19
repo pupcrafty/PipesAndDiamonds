@@ -11,7 +11,8 @@ enum RouteMode { ALTERNATE, RANDOM }
 @export var base_rotation_speed: float = 6.0
 @export var base_push_speed: float = 0.03
 @export var base_intensity: float = 0.0         # around your normal brightness
-@export var intensity_follow: float = 6.0       # how fast it chases the target (bigger = snappier)
+@export var intensity_follow: float = 6.0 
+@export var base_intensity_speed: float = 1;      # how fast it chases the target (bigger = snappier)
 
 @export var beat_intensity_target_boost: float = 1.8
 @export var pulse_intensity_target_boost: float = 2.6
