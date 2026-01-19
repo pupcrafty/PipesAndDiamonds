@@ -1,11 +1,11 @@
+CSGSphere3D
+Node3D
 Camera3D
 DirectionalLight3D
 CharacterBody3D
 CollisionShape3D
 MeshInstance3D
-Node3D
 AudioStreamPlayer
 SpotLight3D
-CSGSphere3D
 Area3D
 Marker3D

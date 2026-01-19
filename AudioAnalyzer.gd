@@ -1,184 +1,121 @@
 extends AudioStreamPlayer
-class_name AudioAnalyzer
+class_name SpectrumAudioAnalyzer
 
-signal cue(kind: String, strength: float, bpm: float, meta: Dictionary)
+signal spectrum_cues(bass: float, mid: float, treble: float, beat: bool, pulse: bool, movement: float)
 
 @export var mic_bus_name: String = "Mic"
 @export var force_input_device: String = "Microphone (HyperX QuadCast)"
 
-# Feature shaping
-@export var gain: float = 2.0
-@export var noise_gate: float = 0.005
+# Frequency bands (Hz)
+@export var bass_lo: float = 40.0
+@export var bass_hi: float = 160.0
+@export var mid_lo: float = 160.0
+@export var mid_hi: float = 1200.0
+@export var treble_lo: float = 1200.0
+@export var treble_hi: float = 8000.0
 
-# Smoothing
-@export var rms_smooth: float = 0.20          # 0..1
-@export var env_speed: float = 0.06           # 0..1 (slow envelope = “bass-ish”)
+# Smoothing / sensitivity
+@export var gain: float = 1.5
+@export var smooth: float = 0.25
+@export var noise_floor: float = 0.002
 
-# Pulse detection (spikes)
-@export var pulse_thresh: float = 0.020       # detail threshold for pulse
-@export var pulse_refractory: float = 0.08    # seconds
+# Beat/pulse detection
+@export var beat_flux_thresh: float = 0.010
+@export var beat_refractory: float = 0.22
+@export var pulse_flux_thresh: float = 0.016
+@export var pulse_refractory: float = 0.08
 
-# Beat detection / tempo lock
-@export var beat_min_bpm: float = 80.0
-@export var beat_max_bpm: float = 160.0
-@export var beat_lock_strength: float = 0.18  # 0..1 (higher = steadier BPM)
-@export var beat_trigger_k: float = 1.6       # threshold factor vs envelope
-@export var beat_refractory: float = 0.22     # seconds (prevents double hits)
+# Movement (trend): positive = rising, negative = falling
+@export var movement_smooth: float = 0.10
 
-# Movement (trend)
-@export var movement_slope_thresh: float = 0.006  # how strong slope must be
-@export var movement_emit_hz: float = 8.0         # how often to emit movement cue
-
-var _cap: AudioEffectCapture
-
-# running features
-var _rms_s: float = 0.0
-var _env: float = 0.0
-var _detail_s: float = 0.0
-
-# pulse state
+var _spec: AudioEffectSpectrumAnalyzerInstance
+var _beat_cd: float = 0.0
 var _pulse_cd: float = 0.0
 
-# beat state
-var _beat_cd: float = 0.0
-var _last_beat_time: float = -999.0
-var _bpm: float = 120.0
-var _beat_phase: float = 0.0  # 0..1 between beats (optional for later)
+# Smoothed band energies
+var _b_s: float = 0.0
+var _m_s: float = 0.0
+var _t_s: float = 0.0
 
-# movement state
-var _move_t: float = 0.0
-var _prev_rms_for_slope: float = 0.0
+# Previous values for “spectral flux”-ish detection
+var _b_prev: float = 0.0
+var _t_prev: float = 0.0
+
+# Movement state
+var _energy_s: float = 0.0
+var _movement_s: float = 0.0
 
 func _ready() -> void:
 	if force_input_device != "":
 		AudioServer.input_device = force_input_device
+
 	if not playing:
 		play()
 
-	_cap = _get_capture(mic_bus_name)
-	if _cap == null:
-		push_error("AudioAnalyzer: No AudioEffectCapture on bus: %s" % mic_bus_name)
+	_spec = _find_spectrum_instance(mic_bus_name)
+	if _spec == null:
+		push_error("SpectrumAudioAnalyzer: No Spectrum Analyzer instance on bus '%s'" % mic_bus_name)
 		set_process(false)
 		return
 
 func _process(delta: float) -> void:
-	if _cap == null:
+	if _spec == null:
 		return
 
-	_pulse_cd = max(_pulse_cd - delta, 0.0)
-	_beat_cd = max(_beat_cd - delta, 0.0)
+	_beat_cd = maxf(_beat_cd - delta, 0.0)
+	_pulse_cd = maxf(_pulse_cd - delta, 0.0)
 
-	var n: int = _cap.get_frames_available()
-	if n <= 0:
-		return
+	var b: float = _band_energy(bass_lo, bass_hi) * gain
+	var m: float = _band_energy(mid_lo, mid_hi) * gain
+	var t: float = _band_energy(treble_lo, treble_hi) * gain
 
-	var frames: PackedVector2Array = _cap.get_buffer(n)
-	var rms: float = _rms(frames) * gain
-	if rms < noise_gate:
-		rms = 0.0
+	# Noise floor clamp (THIS MUST BE HERE)
+	b = 0.0 if b < noise_floor else b
+	m = 0.0 if m < noise_floor else m
+	t = 0.0 if t < noise_floor else t
 
-	# Envelope + “detail”
-	_env += (rms - _env) * env_speed
-	var detail: float = max(rms - _env, 0.0)
+	# Smooth bands
+	_b_s = lerp(_b_s, b, smooth)
+	_m_s = lerp(_m_s, m, smooth)
+	_t_s = lerp(_t_s, t, smooth)
 
-	# Smooth some features used for decisions
-	_rms_s = lerp(_rms_s, rms, rms_smooth)
-	_detail_s = lerp(_detail_s, detail, rms_smooth)
+	# Flux detection (simple, robust)
+	var bass_flux: float = maxf(_b_s - _b_prev, 0.0)
+	var treble_flux: float = maxf(_t_s - _t_prev, 0.0)
+	_b_prev = _b_s
+	_t_prev = _t_s
 
-	# 1) PULSE cue (spike)
-	_try_pulse()
+	var beat := false
+	if _beat_cd <= 0.0 and bass_flux >= beat_flux_thresh:
+		beat = true
+		_beat_cd = beat_refractory
 
-	# 2) BEAT cue (steady)
-	_try_beat(delta)
-
-	# 3) MOVEMENT cue (trend up/down/flat)
-	_try_movement(delta)
-
-func _try_pulse() -> void:
-	if _pulse_cd > 0.0:
-		return
-	if _detail_s >= pulse_thresh:
+	var pulse := false
+	if _pulse_cd <= 0.0 and treble_flux >= pulse_flux_thresh:
+		pulse = true
 		_pulse_cd = pulse_refractory
-		var strength: float = clamp(_detail_s / max(0.0001, pulse_thresh), 0.0, 4.0)
-		cue.emit("pulse", strength, _bpm, {
-			"rms": _rms_s,
-			"env": _env,
-			"detail": _detail_s
-		})
 
-func _try_beat(delta: float) -> void:
-	# Beat trigger uses a relative threshold so it adapts to loudness.
-	# If RMS rises above envelope by a factor, we consider it a candidate hit.
-	if _beat_cd > 0.0:
-		_update_phase(delta)
-		return
+	# Movement = trend of total energy
+	var energy: float = _b_s + _m_s + _t_s
+	var prev_energy: float = _energy_s
+	_energy_s = lerp(_energy_s, energy, movement_smooth)
+	var movement: float = _energy_s - prev_energy
+	_movement_s = lerp(_movement_s, movement, 0.35)
 
-	var thresh: float = _env * beat_trigger_k + pulse_thresh * 0.4
-	if _rms_s >= thresh and _rms_s > 0.0:
-		# candidate beat hit
-		var now := Time.get_ticks_msec() / 1000.0
-		var dt := now - _last_beat_time
+	spectrum_cues.emit(_b_s, _m_s, _t_s, beat, pulse, _movement_s)
 
-		# accept only if interval maps to a plausible BPM
-		if dt > 0.0001:
-			var bpm_inst := 60.0 / dt
-			if bpm_inst >= beat_min_bpm and bpm_inst <= beat_max_bpm:
-				# lock to a steady bpm (low-pass)
-				_bpm = lerp(_bpm, bpm_inst, beat_lock_strength)
-				_last_beat_time = now
-				_beat_cd = beat_refractory
-				_beat_phase = 0.0
+func _band_energy(lo_hz: float, hi_hz: float) -> float:
+	# Godot returns Vector2 magnitudes; take length to get scalar energy
+	var v: Vector2 = _spec.get_magnitude_for_frequency_range(lo_hz, hi_hz)
+	return v.length()
 
-				var strength:float= clamp((_rms_s - thresh) / max(0.0001, thresh), 0.0, 4.0)
-				cue.emit("beat", strength, _bpm, {
-					"rms": _rms_s,
-					"env": _env,
-					"thresh": thresh
-				})
-	_update_phase(delta)
-
-func _update_phase(delta: float) -> void:
-	# Optional: phase progresses based on the locked bpm (useful later)
-	var period: float= 60.0 / max(1.0, _bpm)
-	_beat_phase = fmod(_beat_phase + delta / max(0.0001, period), 1.0)
-
-func _try_movement(delta: float) -> void:
-	_move_t += delta
-	if _move_t < (1.0 / max(1.0, movement_emit_hz)):
-		return
-	_move_t = 0.0
-
-	var slope: float = _rms_s - _prev_rms_for_slope
-	_prev_rms_for_slope = _rms_s
-
-	var kind := "flat"
-	if slope > movement_slope_thresh:
-		kind = "up"
-	elif slope < -movement_slope_thresh:
-		kind = "down"
-
-	# strength is magnitude of slope normalized
-	var strength: float = clamp(abs(slope) / max(0.0001, movement_slope_thresh), 0.0, 4.0)
-	cue.emit("movement_" + kind, strength, _bpm, {
-		"slope": slope,
-		"rms": _rms_s,
-		"phase": _beat_phase
-	})
-
-func _get_capture(bus_name: String) -> AudioEffectCapture:
+func _find_spectrum_instance(bus_name: String) -> AudioEffectSpectrumAnalyzerInstance:
 	var bus: int = AudioServer.get_bus_index(bus_name)
 	if bus == -1:
-		push_error("AudioAnalyzer: Mic bus not found: %s" % bus_name)
 		return null
 	for i: int in range(AudioServer.get_bus_effect_count(bus)):
 		var fx: AudioEffect = AudioServer.get_bus_effect(bus, i)
-		if fx is AudioEffectCapture:
-			return fx as AudioEffectCapture
+		if fx is AudioEffectSpectrumAnalyzer:
+			var inst := AudioServer.get_bus_effect_instance(bus, i)
+			return inst as AudioEffectSpectrumAnalyzerInstance
 	return null
-
-func _rms(frames: PackedVector2Array) -> float:
-	var sum: float = 0.0
-	for s: Vector2 in frames:
-		var v: float = (abs(s.x) + abs(s.y)) * 0.5
-		sum += v * v
-	return sqrt(sum / max(1.0, float(frames.size())))
