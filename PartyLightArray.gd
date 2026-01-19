@@ -9,6 +9,11 @@ signal circular_rotation(new_rotation: float)
 @export var rig_outward_push: float = 0
 @export var rig_rotation: float =0         # faster
 
+@export var lights_per_ring: int = 6
+@export var ring_radius: float = 0.6
+@export var ring_z_offsets: Array[float] = [0.25, 0.0, -0.25]
+@export var ring_phase_offset_deg: float = 0.0
+
 @export var push_min: float = 0.0
 @export var push_max: float = 2.0   
 
@@ -30,24 +35,45 @@ func _ready() -> void:
 			outward_push.connect(child._on_outward_push_change)
 			circular_rotation.connect(child._on_circular_rotation_change)
 			lights.append(child)
-	
-	lights.sort_custom(func(a,b):
-		return a.get_base_distance_from_focus() < b.get_base_distance_from_focus())		
-	
-	var light_orientation:float = 1
-	var last_distance: float = -1.0
-	var distance_epsilon: float = 0.0001
+
+	_layout_rings(lights)
 	
 	for light in lights:
-		var distance = light.get_base_distance_from_focus()
-		if last_distance < 0.0 or abs(distance - last_distance) > distance_epsilon:
-			if last_distance >= 0.0:
-				light_orientation *= -1
-			last_distance = distance
+		var ring_index := light.get_ring_index()
+		var light_orientation: float = 1.0
+		if ring_index == 1:
+			light_orientation = -1.0
 		light.set_rotation_orientation(light_orientation)
 		
 	# Push initial values into the rig + children
 	_emit_all()
+
+func _layout_rings(lights: Array[PartyLight]) -> void:
+	var ring_count := ring_z_offsets.size()
+	if ring_count == 0:
+		return
+	if lights_per_ring <= 0:
+		return
+
+	var expected := ring_count * lights_per_ring
+	if lights.size() < expected:
+		push_warning("PartyLightColorRig: Not enough lights for ring layout. Expected %d, found %d." % [expected, lights.size()])
+
+	var angle_step := TAU / float(lights_per_ring)
+	var base_offset := deg_to_rad(ring_phase_offset_deg)
+	for ring_index in range(ring_count):
+		var z_offset := ring_z_offsets[ring_index]
+		for light_index in range(lights_per_ring):
+			var idx := ring_index * lights_per_ring + light_index
+			if idx >= lights.size():
+				return
+			var angle := base_offset + angle_step * float(light_index)
+			var direction := Vector3(cos(angle), sin(angle), z_offset).normalized()
+			var light := lights[idx]
+			var basis := Basis().looking_at(direction, Vector3.UP)
+			light.transform = Transform3D(basis, direction * ring_radius)
+			light.set_ring_index(ring_index)
+			light.refresh_base_state()
 
 
 func update(rig_push_delta, rig_rotation_delta, rig_intensity_delta)->void:
