@@ -3,7 +3,7 @@ class_name PlayerScript
 
 @export var speed: float = 6.0
 @export var in_corner: bool = false
-@export var turn_time: float = 1
+@export var turn_time: float = .5
 @export var roll_enabled: bool = true
 @export var roll_speed_deg_per_sec: float = 35.0  # constant roll rate
 var _roll_angle: float = 0.0
@@ -39,13 +39,13 @@ func _apply_roll(delta: float) -> void:
 	# Apply a *small* roll step each frame (constant angular velocity)
 	global_transform.basis = (Basis(forward_axis, delta_roll) * base_basis).orthonormalized()
 
-func corner_processing(target: Area3D, track_point: Node3D) -> void:
+func corner_processing(pivotController: PivotController) -> void:
 	in_corner = true
-	current_target = target;
+	current_target = pivotController.stored_target;
 
 	# Turn direction should be based on the corner center, not player position
-	var pivot: Vector3 = track_point.global_position
-	var dir: Vector3 = (target.global_position - pivot).normalized()
+	var pivot: Vector3 = pivotController.global_position
+	var dir: Vector3 = (current_target.global_position - pivot).normalized()
 	if dir.length() < 0.0001:
 		return
 
@@ -68,8 +68,11 @@ func corner_processing(target: Area3D, track_point: Node3D) -> void:
 		_turning = false
 	)
 	
-func corner_exited(exitedPoint: Area3D):
+func corner_exited(exitedPoint: Area3D)->bool:
 	if exitedPoint == current_target and !_turning:
 		current_target = null
 		in_corner = false
+		return true
+	else:
+		return false
 		

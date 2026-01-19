@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://dfyfw54dyp73u" path="res://PartyLight.gd" id="3_kb5x2"]
 [ext_resource type="ArrayMesh" uid="uid://bhnrcchged64n" path="res://low_poly_heart.obj" id="4_20ugn"]
 [ext_resource type="Script" uid="uid://bj1ooqu8y8cgv" path="res://AudioAnalyzer.gd" id="5_pjjw4"]
-[ext_resource type="Script" uid="uid://ckobbdog5livv" path="res://PivotController.gd" id="9_sh5jk"]
+[ext_resource type="Script" uid="uid://ckobbdog5livv" path="res://PivotPoint.gd" id="9_sh5jk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ue1jw"]
 
@@ -586,6 +586,7 @@ mesh = ExtResource("4_20ugn")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseHeart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
 shape = SubResource("SphereShape3D_w3kui")
 
 [node name="Player" type="CharacterBody3D" parent="."]
@@ -601,10 +602,10 @@ shape = SubResource("SphereShape3D_rm6c6")
 
 [node name="TrackPoint1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
-script = ExtResource("9_sh5jk")
 
 [node name="PivotPoint" type="Area3D" parent="TrackPoint1" groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("9_sh5jk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/PivotPoint"]
 shape = SubResource("SphereShape3D_ue1jw")
@@ -632,7 +633,6 @@ shape = SubResource("SphereShape3D_ue1jw")
 
 [node name="TrackPoint2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 7)
-script = ExtResource("9_sh5jk")
 
 [node name="PivotPoint" type="Area3D" parent="TrackPoint2" groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -663,7 +663,6 @@ shape = SubResource("SphereShape3D_ue1jw")
 
 [node name="TrackPoint3" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -27)
-script = ExtResource("9_sh5jk")
 
 [node name="PivotPoint" type="Area3D" parent="TrackPoint3" groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -694,7 +693,6 @@ shape = SubResource("SphereShape3D_ue1jw")
 
 [node name="TrackPoint4" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, -27)
-script = ExtResource("9_sh5jk")
 
 [node name="PivotPoint" type="Area3D" parent="TrackPoint4" groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -725,7 +723,6 @@ shape = SubResource("SphereShape3D_ue1jw")
 
 [node name="TrackPoint5" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2, 7)
-script = ExtResource("9_sh5jk")
 
 [node name="PivotPoint" type="Area3D" parent="TrackPoint5" groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -756,7 +753,6 @@ shape = SubResource("SphereShape3D_ue1jw")
 
 [node name="TrackPoint6" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 36, 7)
-script = ExtResource("9_sh5jk")
 
 [node name="PivotPoint" type="Area3D" parent="TrackPoint6" groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -787,7 +783,6 @@ shape = SubResource("SphereShape3D_ue1jw")
 
 [node name="TrackPoint7" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2, -27)
-script = ExtResource("9_sh5jk")
 
 [node name="PivotPoint" type="Area3D" parent="TrackPoint7" groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -818,7 +813,6 @@ shape = SubResource("SphereShape3D_ue1jw")
 
 [node name="TrackPoint8" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 36, -27)
-script = ExtResource("9_sh5jk")
 
 [node name="PivotPoint" type="Area3D" parent="TrackPoint8" groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

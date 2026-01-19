@@ -1,5 +1,5 @@
-extends Area3D
-class_name PivotPoint
+extends Node3D
+class_name PivotController
 
 @export var stored_target: Area3D
 

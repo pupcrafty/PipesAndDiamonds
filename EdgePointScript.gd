@@ -12,32 +12,37 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "ChaseHeart":
-		print("Heart Entered")
 		var heart :=body as ChaseHeart
 		if heart.in_corner:
 			return
 		
-		var parent = self.get_parent_node_3d();
+		var parent = self.get_parent() as PivotController;
 			
 		var siblings: Array[Area3D] = []
-		var pivot: PivotPoint = null
+		var pivot: Area3D = null
 		for child in parent.get_children():
 			if child != self and child is Area3D :
 				if child.name != "PivotPoint":
 					siblings.append(child)
-				else:
-					pivot = child as PivotPoint
 		var target: Area3D = siblings.pick_random()			
 		heart.corner_processing(target, parent)
-		pivot.store_target(target)
+		if parent.stored_target == null:
+			parent.store_target(target)
 	elif body.name == "Player":
-		var parent = self.get_parent();
-		var pivot: PivotPoint = parent.get_node("PivotPoint") as PivotPoint
-		#player.cornerProcessing(pivot.stored_target, parent)
+		var player := body as PlayerScript
+		if player.in_corner:
+			return
+		var parent = self.get_parent() as PivotController;
+		player.corner_processing(parent)
 		
 
 	# Call the player's handler and pass *this corner*
 
 func _on_body_exited(body: Node3D) -> void:	
 	if body.name == "Player":
+		var goodExit: bool = body.corner_exited(self)
+		if goodExit:
+			var parent = self.get_parent() as PivotController;
+			parent.release_target()
+	elif body.name == "ChaseHeart":
 		body.corner_exited(self)

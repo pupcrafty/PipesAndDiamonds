@@ -5,3 +5,4 @@ res://EdgePointScript.gd
 res://ChaseHeart.gd
 res://PlayerScript.gd
 res://PivotPoint.gd
+res://PivotController.gd
