@@ -316,6 +316,7 @@ script = ExtResource("2_g8fis")
 
 [node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController"]
 script = ExtResource("2_n7rl0")
+base_angle_offset_deg = 0.0
 
 [node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
 transform = Transform3D(1, 0, 0, 0, 0.99680173, -0.07991469, 0, 0.07991469, 0.99680173, 0, 0, 0)
@@ -401,8 +402,51 @@ spot_range = 30.0
 spot_angle = 5.0
 script = ExtResource("3_kb5x2")
 
+[node name="Green13" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green14" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green15" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green16" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green17" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Green18" type="SpotLight3D" parent="ChaseHeart/LightController/GreenLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
 [node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController"]
 script = ExtResource("2_n7rl0")
+base_angle_offset_deg = 10.0
 
 [node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
 transform = Transform3D(1, 0, 0, 0, 0.99680173, -0.07991469, 0, 0.07991469, 0.99680173, 0, 0, 0)
@@ -488,8 +532,51 @@ spot_range = 30.0
 spot_angle = 5.0
 script = ExtResource("3_kb5x2")
 
+[node name="Blue13" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue14" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue15" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue16" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue17" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Blue18" type="SpotLight3D" parent="ChaseHeart/LightController/BlueLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
 [node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController"]
 script = ExtResource("2_n7rl0")
+base_angle_offset_deg = 20.0
 
 [node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
 transform = Transform3D(1, 0, 0, 0, 0.99680173, -0.07991469, 0, 0.07991469, 0.99680173, 0, 0, 0)
@@ -570,6 +657,48 @@ script = ExtResource("3_kb5x2")
 
 [node name="Red12" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
 transform = Transform3D(0.971338, 0, -0.23770262, 0, 1, 0, 0.23770262, 0, 0.971338, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red13" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red14" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red15" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red16" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red17" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.0
+spot_angle = 5.0
+script = ExtResource("3_kb5x2")
+
+[node name="Red18" type="SpotLight3D" parent="ChaseHeart/LightController/RedLightArray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 light_color = Color(1, 0, 0, 1)
 spot_range = 30.0
 spot_angle = 5.0
