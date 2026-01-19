@@ -6,3 +6,8 @@ res://ChaseHeart.gd
 res://PlayerScript.gd
 res://PivotPoint.gd
 res://PivotController.gd
+res://PartyLight.gd
+res://PartyLightArray.gd
+res://AudioAnalyzer.gd
+res://textures/atlas/HalwayAtlasCeling1.tres
+res://textures/materials/CelingMaterial1.tres
