@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name PlayerScript
 
-@export var speed: float = 6.0
+@export var speed: float = 0.0
 @export var in_corner: bool = false
 @export var turn_time: float = .5
 @export var roll_enabled: bool = true
