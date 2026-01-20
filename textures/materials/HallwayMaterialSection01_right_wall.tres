@@ -1,7 +1,8 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dnf61epo0o5jp"]
 
 [ext_resource type="Texture2D" path="res://textures/atlas/HallwayAtlasSection01_right_wall.tres" id="1_atlas"]
 
 [resource]
+transparency = 1
 albedo_texture = ExtResource("1_atlas")
 texture_filter = 1

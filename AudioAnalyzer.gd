@@ -14,10 +14,21 @@ signal spectrum_cues(bass: float, mid: float, treble: float, beat: bool, pulse: 
 @export var treble_lo: float = 1200.0
 @export var treble_hi: float = 8000.0
 
-# Smoothing / sensitivity
+# Base gain + smoothing
 @export var gain: float = 1.5
 @export var smooth: float = 0.25
+
+# --- NEW: Auto-normalization ---
+@export var auto_normalize: bool = true
+@export var loudness_smooth: float = 0.08          # lower = slower adaptation
+@export var target_level: float = 0.08             # “typical” total energy after normalization
+@export var min_norm: float = 0.25                 # don’t over-dampen loud parts too much
+@export var max_norm: float = 8.0                  # don’t boost quiet parts infinitely
+@export var silence_gate: float = 0.0006           # if raw energy below this, treat as silence (prevents insane boost)
+
+# Noise floor (applied AFTER normalization)
 @export var noise_floor: float = 0.002
+@export var noise_floor_ratio_of_target: float = 0.04  # adaptive floor = target_level * ratio
 
 # Beat/pulse detection
 @export var beat_flux_thresh: float = 0.010
@@ -27,6 +38,10 @@ signal spectrum_cues(bass: float, mid: float, treble: float, beat: bool, pulse: 
 
 # Movement (trend): positive = rising, negative = falling
 @export var movement_smooth: float = 0.10
+
+# Debug
+@export var debug_print: bool = false
+@export var debug_print_every_sec: float = 0.25
 
 var _spec: AudioEffectSpectrumAnalyzerInstance
 var _beat_cd: float = 0.0
@@ -45,6 +60,13 @@ var _t_prev: float = 0.0
 var _energy_s: float = 0.0
 var _movement_s: float = 0.0
 
+# Loudness normalization state (raw pre-gain energy EMA)
+var _loudness_ema: float = 0.0
+
+# Debug timer
+var _dbg_t: float = 0.0
+
+
 func _ready() -> void:
 	if force_input_device != "":
 		AudioServer.input_device = force_input_device
@@ -58,6 +80,7 @@ func _ready() -> void:
 		set_process(false)
 		return
 
+
 func _process(delta: float) -> void:
 	if _spec == null:
 		return
@@ -65,21 +88,43 @@ func _process(delta: float) -> void:
 	_beat_cd = maxf(_beat_cd - delta, 0.0)
 	_pulse_cd = maxf(_pulse_cd - delta, 0.0)
 
-	var b: float = _band_energy(bass_lo, bass_hi) * gain
-	var m: float = _band_energy(mid_lo, mid_hi) * gain
-	var t: float = _band_energy(treble_lo, treble_hi) * gain
+	# --- 1) Read RAW energies (no gain, no normalization) ---
+	var b_raw: float = _band_energy(bass_lo, bass_hi)
+	var m_raw: float = _band_energy(mid_lo, mid_hi)
+	var t_raw: float = _band_energy(treble_lo, treble_hi)
+	var energy_raw: float = b_raw + m_raw + t_raw
 
-	# Noise floor clamp (THIS MUST BE HERE)
-	b = 0.0 if b < noise_floor else b
-	m = 0.0 if m < noise_floor else m
-	t = 0.0 if t < noise_floor else t
+	# --- 2) Update loudness EMA ---
+	_loudness_ema = lerpf(_loudness_ema, energy_raw, loudness_smooth)
 
-	# Smooth bands
-	_b_s = lerp(_b_s, b, smooth)
-	_m_s = lerp(_m_s, m, smooth)
-	_t_s = lerp(_t_s, t, smooth)
+	# --- 3) Compute normalization multiplier (optional) ---
+	var norm: float = 1.0
+	if auto_normalize:
+		# Gate: if basically silence, do not boost like crazy
+		if _loudness_ema <= silence_gate:
+			norm = 0.0
+		else:
+			norm = target_level / maxf(_loudness_ema, 0.000001)
+			norm = clampf(norm, min_norm, max_norm)
 
-	# Flux detection (simple, robust)
+	# --- 4) Apply gain + normalization ---
+	var b: float = b_raw * gain * norm
+	var m: float = m_raw * gain * norm
+	var t: float = t_raw * gain * norm
+
+	# --- 5) Noise floor clamp (after normalization) ---
+	# Adaptive floor tied to target level keeps behavior consistent across loud/quiet sections.
+	var adaptive_floor: float = maxf(noise_floor, target_level * noise_floor_ratio_of_target)
+	if b < adaptive_floor: b = 0.0
+	if m < adaptive_floor: m = 0.0
+	if t < adaptive_floor: t = 0.0
+
+	# --- 6) Smooth bands ---
+	_b_s = lerpf(_b_s, b, smooth)
+	_m_s = lerpf(_m_s, m, smooth)
+	_t_s = lerpf(_t_s, t, smooth)
+
+	# --- 7) Flux detection ---
 	var bass_flux: float = maxf(_b_s - _b_prev, 0.0)
 	var treble_flux: float = maxf(_t_s - _t_prev, 0.0)
 	_b_prev = _b_s
@@ -95,19 +140,36 @@ func _process(delta: float) -> void:
 		pulse = true
 		_pulse_cd = pulse_refractory
 
-	# Movement = trend of total energy
+	# --- 8) Movement = trend of total energy ---
 	var energy: float = _b_s + _m_s + _t_s
 	var prev_energy: float = _energy_s
-	_energy_s = lerp(_energy_s, energy, movement_smooth)
+	_energy_s = lerpf(_energy_s, energy, movement_smooth)
 	var movement: float = _energy_s - prev_energy
-	_movement_s = lerp(_movement_s, movement, 0.35)
+	_movement_s = lerpf(_movement_s, movement, 0.35)
+
+	# --- 9) Debug output ---
+	if debug_print:
+		_dbg_t += delta
+		if _dbg_t >= debug_print_every_sec:
+			_dbg_t = 0.0
+			print(
+				"raw=", snappedf(energy_raw, 0.000001),
+				" ema=", snappedf(_loudness_ema, 0.000001),
+				" norm=", snappedf(norm, 0.001),
+				" b=", snappedf(_b_s, 0.0001),
+				" bf=", snappedf(bass_flux, 0.0001),
+				" beat=", beat,
+				" tf=", snappedf(treble_flux, 0.0001),
+				" pulse=", pulse
+			)
 
 	spectrum_cues.emit(_b_s, _m_s, _t_s, beat, pulse, _movement_s)
 
+
 func _band_energy(lo_hz: float, hi_hz: float) -> float:
-	# Godot returns Vector2 magnitudes; take length to get scalar energy
 	var v: Vector2 = _spec.get_magnitude_for_frequency_range(lo_hz, hi_hz)
 	return v.length()
+
 
 func _find_spectrum_instance(bus_name: String) -> AudioEffectSpectrumAnalyzerInstance:
 	var bus: int = AudioServer.get_bus_index(bus_name)

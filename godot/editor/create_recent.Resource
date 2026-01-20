@@ -1,3 +1,4 @@
+ShaderMaterial
 StandardMaterial3D
 AtlasTexture
 AudioBusLayout

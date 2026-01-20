@@ -1,11 +1,14 @@
 CSGSphere3D
-Node3D
-Camera3D
+OmniLight3D
 DirectionalLight3D
+CSGBox3D
+Node3D
+CSGCylinder3D
+WorldEnvironment
+Camera3D
 CharacterBody3D
 CollisionShape3D
 MeshInstance3D
 AudioStreamPlayer
 SpotLight3D
 Area3D
-Marker3D

@@ -1,63 +1,21 @@
-
-[gd_scene load_steps=120 format=3 uid="uid://dbtk33ypckjjh"]
+[gd_scene load_steps=129 format=3 uid="uid://dbtk33ypckjjh"]
 
 [ext_resource type="Script" uid="uid://c1xbobwkhqjvu" path="res://ChaseHeart.gd" id="1_pau2p"]
 [ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
 [ext_resource type="Script" uid="uid://cj0jp3sy54cmm" path="res://EdgePointScript.gd" id="2_eacex"]
 [ext_resource type="Script" uid="uid://c6wi1xkwwwlkf" path="res://LightController.gd" id="2_g8fis"]
 [ext_resource type="ArrayMesh" uid="uid://bhnrcchged64n" path="res://low_poly_heart.obj" id="4_20ugn"]
+[ext_resource type="Material" uid="uid://q7sc803fitlm" path="res://textures/materials/outerRightWall.tres" id="4_pj518"]
 [ext_resource type="Script" uid="uid://bj1ooqu8y8cgv" path="res://AudioAnalyzer.gd" id="5_pjjw4"]
 [ext_resource type="Script" uid="uid://ckobbdog5livv" path="res://PivotController.gd" id="9_sh5jk"]
-
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection01_ceiling.tres" id="mat_s01_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection01_floor.tres" id="mat_s01_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection01_left_wall.tres" id="mat_s01_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection01_right_wall.tres" id="mat_s01_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection02_ceiling.tres" id="mat_s02_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection02_floor.tres" id="mat_s02_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection02_left_wall.tres" id="mat_s02_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection02_right_wall.tres" id="mat_s02_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection03_ceiling.tres" id="mat_s03_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection03_floor.tres" id="mat_s03_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection03_left_wall.tres" id="mat_s03_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection03_right_wall.tres" id="mat_s03_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection04_ceiling.tres" id="mat_s04_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection04_floor.tres" id="mat_s04_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection04_left_wall.tres" id="mat_s04_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection04_right_wall.tres" id="mat_s04_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection05_ceiling.tres" id="mat_s05_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection05_floor.tres" id="mat_s05_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection05_left_wall.tres" id="mat_s05_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection05_right_wall.tres" id="mat_s05_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection06_ceiling.tres" id="mat_s06_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection06_floor.tres" id="mat_s06_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection06_left_wall.tres" id="mat_s06_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection06_right_wall.tres" id="mat_s06_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection07_ceiling.tres" id="mat_s07_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection07_floor.tres" id="mat_s07_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection07_left_wall.tres" id="mat_s07_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection07_right_wall.tres" id="mat_s07_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection08_ceiling.tres" id="mat_s08_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection08_floor.tres" id="mat_s08_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection08_left_wall.tres" id="mat_s08_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection08_right_wall.tres" id="mat_s08_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection09_ceiling.tres" id="mat_s09_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection09_floor.tres" id="mat_s09_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection09_left_wall.tres" id="mat_s09_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection09_right_wall.tres" id="mat_s09_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection10_ceiling.tres" id="mat_s10_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection10_floor.tres" id="mat_s10_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection10_left_wall.tres" id="mat_s10_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection10_right_wall.tres" id="mat_s10_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection11_ceiling.tres" id="mat_s11_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection11_floor.tres" id="mat_s11_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection11_left_wall.tres" id="mat_s11_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection11_right_wall.tres" id="mat_s11_right_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection12_ceiling.tres" id="mat_s12_ceiling"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection12_floor.tres" id="mat_s12_floor"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection12_left_wall.tres" id="mat_s12_left_wall"]
-[ext_resource type="Material" path="res://textures/materials/HallwayMaterialSection12_right_wall.tres" id="mat_s12_right_wall"]
-
+[ext_resource type="Script" uid="uid://hu20y2oxuo2s" path="res://Strobe.gd" id="19_tkant"]
+[ext_resource type="Script" uid="uid://diphqsvs2ok52" path="res://StrobeLight.gd" id="20_v4qe2"]
+[ext_resource type="Texture2D" uid="uid://dlplnm0p6rmos" path="res://textures/image/crystal1.png" id="22_v4qe2"]
+[ext_resource type="Texture2D" uid="uid://krokg4nstq8e" path="res://textures/image/eye_tile_B.png" id="23_j6x25"]
+[ext_resource type="Texture2D" uid="uid://ctfqlmlh74qwr" path="res://textures/image/eye_tile_G.png" id="24_5wm5s"]
+[ext_resource type="Texture2D" uid="uid://casui88ub007r" path="res://textures/image/eye_tile_R.png" id="25_tkant"]
+[ext_resource type="Material" uid="uid://bfjpvlwy3yhte" path="res://textures/materials/HallwayMaterialSection01_floor.tres" id="mat_s01_floor"]
+[ext_resource type="Material" uid="uid://dnf61epo0o5jp" path="res://textures/materials/HallwayMaterialSection01_right_wall.tres" id="mat_s01_right_wall"]
 [ext_resource type="Texture2D" uid="uid://lqyk8tnkss4r" path="res://textures/image/large_tile_00.png" id="tile_00"]
 [ext_resource type="Texture2D" uid="uid://yanlvnd2kgrm" path="res://textures/image/large_tile_01.png" id="tile_01"]
 [ext_resource type="Texture2D" uid="uid://ci2x6byxnyo3u" path="res://textures/image/large_tile_02.png" id="tile_02"]
@@ -71,44 +29,22 @@
 [ext_resource type="Texture2D" uid="uid://cvp8hxu8xvso5" path="res://textures/image/large_tile_10.png" id="tile_10"]
 [ext_resource type="Texture2D" uid="uid://pid0u1upjj0o" path="res://textures/image/large_tile_11.png" id="tile_11"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s01_ceiling"]
-atlas = ExtResource("tile_00")
-region = Rect2(0, 0, 5400, 720)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s01_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s01_ceiling")
-texture_filter = 1
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s01_floor"]
-atlas = ExtResource("tile_00")
-region = Rect2(0, 720, 5400, 720)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s01_floor"]
-albedo_texture = SubResource("AtlasTexture_s01_floor")
-texture_filter = 1
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_s01_left_wall"]
 atlas = ExtResource("tile_00")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s01_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s01_left_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s01_right_wall"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s01_ceiling"]
 atlas = ExtResource("tile_00")
-region = Rect2(0, 2160, 5400, 720)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s01_right_wall"]
-albedo_texture = SubResource("AtlasTexture_s01_right_wall")
-texture_filter = 1
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s02_ceiling"]
-atlas = ExtResource("tile_01")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s02_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s01_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s01_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s02_floor"]
@@ -116,6 +52,7 @@ atlas = ExtResource("tile_01")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s02_floor")
 texture_filter = 1
 
@@ -124,6 +61,7 @@ atlas = ExtResource("tile_01")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s02_left_wall")
 texture_filter = 1
 
@@ -132,15 +70,17 @@ atlas = ExtResource("tile_01")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s02_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s03_ceiling"]
-atlas = ExtResource("tile_02")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s02_ceiling"]
+atlas = ExtResource("tile_01")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s03_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s03_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s02_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s03_floor"]
@@ -148,6 +88,7 @@ atlas = ExtResource("tile_02")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s03_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s03_floor")
 texture_filter = 1
 
@@ -156,6 +97,7 @@ atlas = ExtResource("tile_02")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s03_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s03_left_wall")
 texture_filter = 1
 
@@ -164,15 +106,17 @@ atlas = ExtResource("tile_02")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s03_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s03_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s04_ceiling"]
-atlas = ExtResource("tile_03")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s03_ceiling"]
+atlas = ExtResource("tile_02")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s04_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s04_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s03_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s03_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s04_floor"]
@@ -180,6 +124,7 @@ atlas = ExtResource("tile_03")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s04_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s04_floor")
 texture_filter = 1
 
@@ -188,6 +133,7 @@ atlas = ExtResource("tile_03")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s04_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s04_left_wall")
 texture_filter = 1
 
@@ -196,15 +142,17 @@ atlas = ExtResource("tile_03")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s04_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s04_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s05_ceiling"]
-atlas = ExtResource("tile_04")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s04_ceiling"]
+atlas = ExtResource("tile_03")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s05_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s05_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s04_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s04_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s05_floor"]
@@ -212,6 +160,7 @@ atlas = ExtResource("tile_04")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s05_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s05_floor")
 texture_filter = 1
 
@@ -220,6 +169,7 @@ atlas = ExtResource("tile_04")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s05_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s05_left_wall")
 texture_filter = 1
 
@@ -228,15 +178,17 @@ atlas = ExtResource("tile_04")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s05_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s05_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s06_ceiling"]
-atlas = ExtResource("tile_05")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s05_ceiling"]
+atlas = ExtResource("tile_04")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s06_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s05_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s05_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s06_floor"]
@@ -244,6 +196,7 @@ atlas = ExtResource("tile_05")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s06_floor")
 texture_filter = 1
 
@@ -252,6 +205,7 @@ atlas = ExtResource("tile_05")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s06_left_wall")
 texture_filter = 1
 
@@ -260,15 +214,17 @@ atlas = ExtResource("tile_05")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s06_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s07_ceiling"]
-atlas = ExtResource("tile_06")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s06_ceiling"]
+atlas = ExtResource("tile_05")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s07_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s07_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s06_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s07_floor"]
@@ -276,6 +232,7 @@ atlas = ExtResource("tile_06")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s07_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s07_floor")
 texture_filter = 1
 
@@ -284,6 +241,7 @@ atlas = ExtResource("tile_06")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s07_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s07_left_wall")
 texture_filter = 1
 
@@ -292,15 +250,17 @@ atlas = ExtResource("tile_06")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s07_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s07_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s08_ceiling"]
-atlas = ExtResource("tile_07")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s07_ceiling"]
+atlas = ExtResource("tile_06")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s08_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s07_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s07_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s08_floor"]
@@ -308,6 +268,7 @@ atlas = ExtResource("tile_07")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s08_floor")
 texture_filter = 1
 
@@ -316,6 +277,7 @@ atlas = ExtResource("tile_07")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s08_left_wall")
 texture_filter = 1
 
@@ -324,15 +286,17 @@ atlas = ExtResource("tile_07")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s08_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s09_ceiling"]
-atlas = ExtResource("tile_08")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s08_ceiling"]
+atlas = ExtResource("tile_07")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s09_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s09_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s08_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s09_floor"]
@@ -340,6 +304,7 @@ atlas = ExtResource("tile_08")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s09_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s09_floor")
 texture_filter = 1
 
@@ -348,6 +313,7 @@ atlas = ExtResource("tile_08")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s09_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s09_left_wall")
 texture_filter = 1
 
@@ -356,15 +322,17 @@ atlas = ExtResource("tile_08")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s09_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s09_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s10_ceiling"]
-atlas = ExtResource("tile_09")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s09_ceiling"]
+atlas = ExtResource("tile_08")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s10_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s10_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s09_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s09_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s10_floor"]
@@ -372,6 +340,7 @@ atlas = ExtResource("tile_09")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s10_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s10_floor")
 texture_filter = 1
 
@@ -380,6 +349,7 @@ atlas = ExtResource("tile_09")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s10_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s10_left_wall")
 texture_filter = 1
 
@@ -388,15 +358,17 @@ atlas = ExtResource("tile_09")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s10_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s10_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s11_ceiling"]
-atlas = ExtResource("tile_10")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s10_ceiling"]
+atlas = ExtResource("tile_09")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s11_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s10_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s10_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s11_floor"]
@@ -404,6 +376,7 @@ atlas = ExtResource("tile_10")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s11_floor")
 texture_filter = 1
 
@@ -412,6 +385,7 @@ atlas = ExtResource("tile_10")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s11_left_wall")
 texture_filter = 1
 
@@ -420,15 +394,17 @@ atlas = ExtResource("tile_10")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s11_right_wall")
 texture_filter = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s12_ceiling"]
-atlas = ExtResource("tile_11")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s11_ceiling"]
+atlas = ExtResource("tile_10")
 region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s12_ceiling"]
-albedo_texture = SubResource("AtlasTexture_s12_ceiling")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s11_ceiling")
 texture_filter = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s12_floor"]
@@ -436,6 +412,7 @@ atlas = ExtResource("tile_11")
 region = Rect2(0, 720, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s12_floor"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s12_floor")
 texture_filter = 1
 
@@ -444,6 +421,7 @@ atlas = ExtResource("tile_11")
 region = Rect2(0, 1440, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s12_left_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s12_left_wall")
 texture_filter = 1
 
@@ -452,17 +430,43 @@ atlas = ExtResource("tile_11")
 region = Rect2(0, 2160, 5400, 720)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s12_right_wall"]
+transparency = 1
 albedo_texture = SubResource("AtlasTexture_s12_right_wall")
 texture_filter = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s12_ceiling"]
+atlas = ExtResource("tile_11")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s12_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s12_ceiling")
+texture_filter = 1
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_g8fis"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkbh0"]
+albedo_texture = ExtResource("22_v4qe2")
+albedo_texture_force_srgb = true
+uv1_triplanar = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w3kui"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rm6c6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ue1jw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4qe2"]
+transparency = 1
+albedo_texture = ExtResource("23_j6x25")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv5t0"]
+transparency = 1
+albedo_texture = ExtResource("24_5wm5s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pe2g8"]
+transparency = 1
+albedo_texture = ExtResource("25_tkant")
 
 [node name="Hallway" type="Node3D"]
 
@@ -472,25 +476,43 @@ texture_filter = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
 material = ExtResource("mat_s01_floor")
-material = SubResource("StandardMaterial3D_s01_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s01_left_wall")
 material = SubResource("StandardMaterial3D_s01_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
 material = ExtResource("mat_s01_right_wall")
-material = SubResource("StandardMaterial3D_s01_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s01_ceiling")
 material = SubResource("StandardMaterial3D_s01_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section1"]
+
+[node name="floor" type="CSGBox3D" parent="Section1/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section1/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section1/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section1/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section2" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 0, -27)
@@ -498,26 +520,44 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 
 [node name="floor" type="CSGBox3D" parent="Section2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s02_floor")
 material = SubResource("StandardMaterial3D_s02_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s02_left_wall")
 material = SubResource("StandardMaterial3D_s02_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s02_right_wall")
 material = SubResource("StandardMaterial3D_s02_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s02_ceiling")
 material = SubResource("StandardMaterial3D_s02_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section2"]
+
+[node name="floor" type="CSGBox3D" parent="Section2/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section2/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section2/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section2/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section3" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34, 0, -20)
@@ -525,26 +565,44 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34, 
 [node name="floor" type="CSGBox3D" parent="Section3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s03_floor")
 material = SubResource("StandardMaterial3D_s03_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s03_left_wall")
 material = SubResource("StandardMaterial3D_s03_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s03_right_wall")
 material = SubResource("StandardMaterial3D_s03_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s03_ceiling")
 material = SubResource("StandardMaterial3D_s03_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section3"]
+
+[node name="floor" type="CSGBox3D" parent="Section3/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section3/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section3/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section3/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section4" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 0, 7)
@@ -552,26 +610,44 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 
 [node name="floor" type="CSGBox3D" parent="Section4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s04_floor")
 material = SubResource("StandardMaterial3D_s04_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s04_left_wall")
 material = SubResource("StandardMaterial3D_s04_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s04_right_wall")
 material = SubResource("StandardMaterial3D_s04_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s04_ceiling")
 material = SubResource("StandardMaterial3D_s04_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section4"]
+
+[node name="floor" type="CSGBox3D" parent="Section4/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section4/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section4/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section4/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section5" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 9, 5)
@@ -579,26 +655,44 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 9
 [node name="floor" type="CSGBox3D" parent="Section5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s05_floor")
 material = SubResource("StandardMaterial3D_s05_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s05_left_wall")
 material = SubResource("StandardMaterial3D_s05_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s05_right_wall")
 material = SubResource("StandardMaterial3D_s05_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s05_ceiling")
 material = SubResource("StandardMaterial3D_s05_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section5"]
+
+[node name="floor" type="CSGBox3D" parent="Section5/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section5/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section5/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section5/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section6" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 9, -29)
@@ -606,26 +700,44 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 9
 [node name="floor" type="CSGBox3D" parent="Section6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s06_floor")
 material = SubResource("StandardMaterial3D_s06_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s06_left_wall")
 material = SubResource("StandardMaterial3D_s06_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s06_right_wall")
 material = SubResource("StandardMaterial3D_s06_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s06_ceiling")
 material = SubResource("StandardMaterial3D_s06_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section6"]
+
+[node name="floor" type="CSGBox3D" parent="Section6/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section6/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section6/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section6/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section7" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 34, 9, 5)
@@ -633,26 +745,44 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 34, 
 [node name="floor" type="CSGBox3D" parent="Section7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s07_floor")
 material = SubResource("StandardMaterial3D_s07_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s07_left_wall")
 material = SubResource("StandardMaterial3D_s07_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s07_right_wall")
 material = SubResource("StandardMaterial3D_s07_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s07_ceiling")
 material = SubResource("StandardMaterial3D_s07_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section7"]
+
+[node name="floor" type="CSGBox3D" parent="Section7/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section7/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section7/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section7/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section8" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 34, 9, -29)
@@ -660,26 +790,44 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 34, 
 [node name="floor" type="CSGBox3D" parent="Section8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s08_floor")
 material = SubResource("StandardMaterial3D_s08_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s08_left_wall")
 material = SubResource("StandardMaterial3D_s08_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s08_right_wall")
 material = SubResource("StandardMaterial3D_s08_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s08_ceiling")
 material = SubResource("StandardMaterial3D_s08_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section8"]
+
+[node name="floor" type="CSGBox3D" parent="Section8/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section8/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section8/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section8/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section9" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34, 0)
@@ -687,26 +835,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34, 0)
 [node name="floor" type="CSGBox3D" parent="Section9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s09_floor")
 material = SubResource("StandardMaterial3D_s09_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s09_left_wall")
 material = SubResource("StandardMaterial3D_s09_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s09_right_wall")
 material = SubResource("StandardMaterial3D_s09_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s09_ceiling")
 material = SubResource("StandardMaterial3D_s09_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section9"]
+
+[node name="floor" type="CSGBox3D" parent="Section9/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section9/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section9/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section9/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section10" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 34, -27)
@@ -714,26 +880,44 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 
 [node name="floor" type="CSGBox3D" parent="Section10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s10_floor")
 material = SubResource("StandardMaterial3D_s10_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s10_left_wall")
 material = SubResource("StandardMaterial3D_s10_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s10_right_wall")
 material = SubResource("StandardMaterial3D_s10_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s10_ceiling")
 material = SubResource("StandardMaterial3D_s10_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section10"]
+
+[node name="floor" type="CSGBox3D" parent="Section10/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section10/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section10/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section10/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section11" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34, 34, -20)
@@ -741,26 +925,44 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34, 
 [node name="floor" type="CSGBox3D" parent="Section11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s11_floor")
 material = SubResource("StandardMaterial3D_s11_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s11_left_wall")
 material = SubResource("StandardMaterial3D_s11_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s11_right_wall")
 material = SubResource("StandardMaterial3D_s11_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s11_ceiling")
 material = SubResource("StandardMaterial3D_s11_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section11"]
+
+[node name="floor" type="CSGBox3D" parent="Section11/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section11/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section11/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section11/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="Section12" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 34, 7)
@@ -768,26 +970,44 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 
 [node name="floor" type="CSGBox3D" parent="Section12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s12_floor")
 material = SubResource("StandardMaterial3D_s12_floor")
 
 [node name="left wall" type="CSGBox3D" parent="Section12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s12_left_wall")
 material = SubResource("StandardMaterial3D_s12_left_wall")
 
 [node name="right wall" type="CSGBox3D" parent="Section12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = ExtResource("mat_s12_right_wall")
 material = SubResource("StandardMaterial3D_s12_right_wall")
 
 [node name="celing" type="CSGBox3D" parent="Section12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("mat_s12_ceiling")
 material = SubResource("StandardMaterial3D_s12_ceiling")
+
+[node name="OuterWalls" type="Node3D" parent="Section12"]
+
+[node name="floor" type="CSGBox3D" parent="Section12/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section12/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section12/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section12/OuterWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
 
 [node name="ChaseHeart" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6)
@@ -804,6 +1024,27 @@ bus = &"Mic"
 script = ExtResource("5_pjjw4")
 
 [node name="Strobe" type="Node3D" parent="ChaseHeart/LightController"]
+script = ExtResource("19_tkant")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ChaseHeart/LightController/Strobe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 2)
+light_energy = 0.0
+script = ExtResource("20_v4qe2")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="ChaseHeart/LightController/Strobe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, 2)
+light_energy = 0.0
+script = ExtResource("20_v4qe2")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="ChaseHeart/LightController/Strobe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 2)
+light_energy = 0.0
+script = ExtResource("20_v4qe2")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="ChaseHeart/LightController/Strobe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, 2)
+light_energy = 0.0
+script = ExtResource("20_v4qe2")
 
 [node name="FrontRing" type="Node3D" parent="ChaseHeart/LightController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
@@ -813,14 +1054,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 [node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/GreenLightArray"]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
 [node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/GreenLightArray"]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
@@ -829,14 +1070,14 @@ spot_angle = 23.0
 [node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/RedLightArray"]
 transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, 0.433, 0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
 [node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/RedLightArray"]
 transform = Transform3D(-4.371139e-08, -0.50000006, -0.8660254, 0, -0.8660254, 0.50000006, -1, 2.1855696e-08, 3.7855173e-08, -0.433, -0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
@@ -845,14 +1086,14 @@ spot_angle = 23.0
 [node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/BlueLightArray"]
 transform = Transform3D(-4.371139e-08, 0.50000006, -0.8660254, 0, -0.8660254, -0.50000006, -1, -2.1855696e-08, 3.7855173e-08, 0.433, -0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
 
 [node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/BlueLightArray"]
 transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, -0.433, 0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
 
@@ -864,14 +1105,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 [node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/GreenLightArray"]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
 [node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/GreenLightArray"]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
@@ -880,14 +1121,14 @@ spot_angle = 23.0
 [node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/RedLightArray"]
 transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, 0.433, 0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
 [node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/RedLightArray"]
 transform = Transform3D(-4.371139e-08, -0.50000006, -0.8660254, 0, -0.8660254, 0.50000006, -1, 2.1855696e-08, 3.7855173e-08, -0.433, -0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
@@ -896,14 +1137,14 @@ spot_angle = 23.0
 [node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/BlueLightArray"]
 transform = Transform3D(-4.371139e-08, 0.50000006, -0.8660254, 0, -0.8660254, -0.50000006, -1, -2.1855696e-08, 3.7855173e-08, 0.433, -0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
 
 [node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/BlueLightArray"]
 transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, -0.433, 0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
 
@@ -914,14 +1155,14 @@ spot_angle = 30.0
 [node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/GreenLightArray"]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
 [node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/GreenLightArray"]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
@@ -930,14 +1171,14 @@ spot_angle = 23.0
 [node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/RedLightArray"]
 transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, 0.433, 0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
 [node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/RedLightArray"]
 transform = Transform3D(-4.371139e-08, -0.50000006, -0.8660254, 0, -0.8660254, 0.50000006, -1, 2.1855696e-08, 3.7855173e-08, -0.433, -0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
 
@@ -946,20 +1187,34 @@ spot_angle = 23.0
 [node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/BlueLightArray"]
 transform = Transform3D(-4.371139e-08, 0.50000006, -0.8660254, 0, -0.8660254, -0.50000006, -1, -2.1855696e-08, 3.7855173e-08, 0.433, -0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
 
 [node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/BlueLightArray"]
 transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, -0.433, 0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ChaseHeart"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("4_20ugn")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_xkbh0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ChaseHeart"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0.1)
+mesh = ExtResource("4_20ugn")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_xkbh0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ChaseHeart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+mesh = ExtResource("4_20ugn")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_xkbh0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseHeart"]
 shape = SubResource("SphereShape3D_w3kui")
@@ -972,8 +1227,6 @@ script = ExtResource("1_ue1jw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("SphereShape3D_rm6c6")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
 
 [node name="TrackPoint1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
@@ -1222,6 +1475,270 @@ script = ExtResource("2_eacex")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/EdgePointZAxis"]
 shape = SubResource("SphereShape3D_ue1jw")
+
+[node name="Corner1" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, 7)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner1"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner1"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner1"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner1"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -27)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner2"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner2"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner2"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner2"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner3" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34, 2, 7)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner3"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner3"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner3"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner3"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner4" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 34, 2, -27)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner4"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner4"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner4"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner4"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner5" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 36, 7)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner5"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner5"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner5"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner5"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner6" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 36, -27)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner6"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner6"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner6"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner6"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner7" type="Node3D" parent="."]
+transform = Transform3D(-1, 8.742278e-08, 4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, -8.742278e-08, -1, 1.9106855e-15, 34, 36, 7)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner7"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner7"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner7"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner7"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner8" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, -1, 1, -4.371139e-08, -4.371139e-08, 34, 36, -27)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner8"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner8"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner8"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner8"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
 
 [connection signal="body_entered" from="TrackPoint1/EdgePointXAxis" to="TrackPoint1/EdgePointXAxis" method="_on_body_entered"]
 [connection signal="body_exited" from="TrackPoint1/EdgePointXAxis" to="TrackPoint1/EdgePointXAxis" method="_on_body_exited"]
