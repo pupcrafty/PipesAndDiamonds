@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://dbtk33ypckjjh"]
+[gd_scene load_steps=131 format=3 uid="uid://dbtk33ypckjjh"]
 
 [ext_resource type="Script" uid="uid://c1xbobwkhqjvu" path="res://ChaseHeart.gd" id="1_pau2p"]
 [ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://ckobbdog5livv" path="res://PivotController.gd" id="9_sh5jk"]
 [ext_resource type="Script" uid="uid://hu20y2oxuo2s" path="res://Strobe.gd" id="19_tkant"]
 [ext_resource type="Script" uid="uid://diphqsvs2ok52" path="res://StrobeLight.gd" id="20_v4qe2"]
+[ext_resource type="Script" uid="uid://dfyfw54dyp73u" path="res://PartyLight.gd" id="21_dv5t0"]
+[ext_resource type="Script" uid="uid://yhyk383q1bme" path="res://PartyLightRing.gd" id="21_pe2g8"]
 [ext_resource type="Texture2D" uid="uid://dlplnm0p6rmos" path="res://textures/image/crystal1.png" id="22_v4qe2"]
 [ext_resource type="Texture2D" uid="uid://krokg4nstq8e" path="res://textures/image/eye_tile_B.png" id="23_j6x25"]
 [ext_resource type="Texture2D" uid="uid://ctfqlmlh74qwr" path="res://textures/image/eye_tile_G.png" id="24_5wm5s"]
@@ -1048,155 +1050,194 @@ script = ExtResource("20_v4qe2")
 
 [node name="FrontRing" type="Node3D" parent="ChaseHeart/LightController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+script = ExtResource("21_pe2g8")
 
 [node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController/FrontRing"]
 
 [node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
 light_color = Color(0, 1, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "FrontRing"])
 
 [node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
 light_color = Color(0, 1, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "FrontRing"])
 
 [node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController/FrontRing"]
 
 [node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, 0.433, 0.25, 0)
+transform = Transform3D(0, -0.5, -0.8660254, -7.5710346e-08, -0.8660254, 0.5, -1, 6.556708e-08, -3.7855173e-08, 0.433, 0.25, 0)
 light_color = Color(1, 0, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "FrontRing"])
 
 [node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, -0.50000006, -0.8660254, 0, -0.8660254, 0.50000006, -1, 2.1855696e-08, 3.7855173e-08, -0.433, -0.25, 0)
+transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, -0.433, -0.25, 0)
 light_color = Color(1, 0, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "FrontRing"])
 
 [node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController/FrontRing"]
 
 [node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, 0.50000006, -0.8660254, 0, -0.8660254, -0.50000006, -1, -2.1855696e-08, 3.7855173e-08, 0.433, -0.25, 0)
+transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 0.433, -0.25, 0)
 light_color = Color(0, 0, 1, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "FrontRing"])
 
 [node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, -0.433, 0.25, 0)
+transform = Transform3D(8.742278e-08, 0.5, -0.8660254, -7.5710346e-08, -0.8660254, -0.5, -1, 1.09278474e-07, -3.7855173e-08, -0.433, 0.25, 0)
 light_color = Color(0, 0, 1, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "FrontRing"])
 
 [node name="MidRing" type="Node3D" parent="ChaseHeart/LightController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+script = ExtResource("21_pe2g8")
 
 [node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController/MidRing"]
 
 [node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
 light_color = Color(0, 1, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "MidRing"])
 
 [node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
 light_color = Color(0, 1, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "MidRing"])
 
 [node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController/MidRing"]
 
 [node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, 0.433, 0.25, 0)
+transform = Transform3D(0, -0.5, -0.8660254, -7.5710346e-08, -0.8660254, 0.5, -1, 6.556708e-08, -3.7855173e-08, 0.433, 0.25, 0)
 light_color = Color(1, 0, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "MidRing"])
 
 [node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, -0.50000006, -0.8660254, 0, -0.8660254, 0.50000006, -1, 2.1855696e-08, 3.7855173e-08, -0.433, -0.25, 0)
+transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, -0.433, -0.25, 0)
 light_color = Color(1, 0, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "MidRing"])
 
 [node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController/MidRing"]
 
 [node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, 0.50000006, -0.8660254, 0, -0.8660254, -0.50000006, -1, -2.1855696e-08, 3.7855173e-08, 0.433, -0.25, 0)
+transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 0.433, -0.25, 0)
 light_color = Color(0, 0, 1, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "MidRing"])
 
 [node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, -0.433, 0.25, 0)
+transform = Transform3D(8.742278e-08, 0.5, -0.8660254, -7.5710346e-08, -0.8660254, -0.5, -1, 1.09278474e-07, -3.7855173e-08, -0.433, 0.25, 0)
 light_color = Color(0, 0, 1, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "MidRing"])
 
 [node name="BackRing" type="Node3D" parent="ChaseHeart/LightController"]
+script = ExtResource("21_pe2g8")
 
 [node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController/BackRing"]
 
 [node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
 light_color = Color(0, 1, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "BackRing"])
 
 [node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
 light_color = Color(0, 1, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "BackRing"])
 
 [node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController/BackRing"]
 
 [node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, 0.433, 0.25, 0)
+transform = Transform3D(0, -0.5, -0.8660254, -7.5710346e-08, -0.8660254, 0.5, -1, 6.556708e-08, -3.7855173e-08, 0.433, 0.25, 0)
 light_color = Color(1, 0, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "BackRing"])
 
 [node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, -0.50000006, -0.8660254, 0, -0.8660254, 0.50000006, -1, 2.1855696e-08, 3.7855173e-08, -0.433, -0.25, 0)
+transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, -0.433, -0.25, 0)
 light_color = Color(1, 0, 0, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "BackRing"])
 
 [node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController/BackRing"]
 
 [node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, 0.50000006, -0.8660254, 0, -0.8660254, -0.50000006, -1, -2.1855696e-08, 3.7855173e-08, 0.433, -0.25, 0)
+transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 0.433, -0.25, 0)
 light_color = Color(0, 0, 1, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "BackRing"])
 
 [node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, -0.433, 0.25, 0)
+transform = Transform3D(8.742278e-08, 0.5, -0.8660254, -7.5710346e-08, -0.8660254, -0.5, -1, 1.09278474e-07, -3.7855173e-08, -0.433, 0.25, 0)
 light_color = Color(0, 0, 1, 1)
 light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "BackRing"])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ChaseHeart"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

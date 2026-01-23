@@ -7,3 +7,7 @@ res://StrobeLight.gd
 res://LightController.gd
 res://AudioAnalyzer.gd
 res://textures/materials/HallwayMaterialSection01_right_wall.tres
+res://PartyLight.gd
+res://ChaseHeart.gd
+res://PlayerScript.gd
+res://PartyLightRing.gd

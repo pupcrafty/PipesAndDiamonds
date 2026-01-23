@@ -3,6 +3,7 @@ class_name StrobeLight
 
 var _base_energy: float = 0.0
 
+@export var light_groups: Array[String] = ["StrobeLight"]
 
 func _ready() -> void:
 	# Remember whatever energy you set in the inspector as the "normal" value
