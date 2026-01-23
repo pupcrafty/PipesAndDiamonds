@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://dbtk33ypckjjh"]
+[gd_scene load_steps=132 format=3 uid="uid://dbtk33ypckjjh"]
 
 [ext_resource type="Script" uid="uid://c1xbobwkhqjvu" path="res://ChaseHeart.gd" id="1_pau2p"]
 [ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://diphqsvs2ok52" path="res://StrobeLight.gd" id="20_v4qe2"]
 [ext_resource type="Script" uid="uid://dfyfw54dyp73u" path="res://PartyLight.gd" id="21_dv5t0"]
 [ext_resource type="Script" uid="uid://yhyk383q1bme" path="res://PartyLightRing.gd" id="21_pe2g8"]
+[ext_resource type="Script" uid="uid://c6w5j02r3w4m1" path="res://ShowManager.gd" id="22_6v4y4"]
 [ext_resource type="Texture2D" uid="uid://dlplnm0p6rmos" path="res://textures/image/crystal1.png" id="22_v4qe2"]
 [ext_resource type="Texture2D" uid="uid://krokg4nstq8e" path="res://textures/image/eye_tile_B.png" id="23_j6x25"]
 [ext_resource type="Texture2D" uid="uid://ctfqlmlh74qwr" path="res://textures/image/eye_tile_G.png" id="24_5wm5s"]
@@ -1018,6 +1019,9 @@ script = ExtResource("1_pau2p")
 
 [node name="LightController" type="Node3D" parent="ChaseHeart"]
 script = ExtResource("2_g8fis")
+
+[node name="ShowManager" type="Node" parent="ChaseHeart/LightController"]
+script = ExtResource("22_6v4y4")
 
 [node name="MicPlayer" type="AudioStreamPlayer" parent="ChaseHeart/LightController"]
 stream = SubResource("AudioStreamMicrophone_g8fis")
