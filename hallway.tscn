@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://dbtk33ypckjjh"]
+[gd_scene load_steps=134 format=3 uid="uid://dbtk33ypckjjh"]
 
 [ext_resource type="Script" uid="uid://c1xbobwkhqjvu" path="res://ChaseHeart.gd" id="1_pau2p"]
 [ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://cjj5muf02ykru" path="res://textures/image/large_tile_09.png" id="tile_09"]
 [ext_resource type="Texture2D" uid="uid://cvp8hxu8xvso5" path="res://textures/image/large_tile_10.png" id="tile_10"]
 [ext_resource type="Texture2D" uid="uid://pid0u1upjj0o" path="res://textures/image/large_tile_11.png" id="tile_11"]
+[ext_resource type="Script" uid="uid://c8si15aqvectx" path="res://PhraseInspector.gd" id="26_phrase"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s01_left_wall"]
 atlas = ExtResource("tile_00")
@@ -1029,6 +1030,9 @@ stream = SubResource("AudioStreamMicrophone_g8fis")
 autoplay = true
 bus = &"Mic"
 script = ExtResource("5_pjjw4")
+
+[node name="PhraseInspector" type="Node" parent="ChaseHeart/LightController"]
+script = ExtResource("26_phrase")
 
 [node name="Strobe" type="Node3D" parent="ChaseHeart/LightController"]
 script = ExtResource("19_tkant")
