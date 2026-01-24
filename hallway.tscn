@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://dbtk33ypckjjh"]
+[gd_scene load_steps=133 format=3 uid="uid://dbtk33ypckjjh"]
 
 [ext_resource type="Script" uid="uid://c1xbobwkhqjvu" path="res://ChaseHeart.gd" id="1_pau2p"]
 [ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://dlplnm0p6rmos" path="res://textures/image/crystal1.png" id="22_v4qe2"]
 [ext_resource type="Texture2D" uid="uid://krokg4nstq8e" path="res://textures/image/eye_tile_B.png" id="23_j6x25"]
 [ext_resource type="Texture2D" uid="uid://ctfqlmlh74qwr" path="res://textures/image/eye_tile_G.png" id="24_5wm5s"]
-[ext_resource type="Script" uid="uid://bd7hanfpuslpj" path="res://sanity.gd" id="25_fan8s"]
 [ext_resource type="Texture2D" uid="uid://casui88ub007r" path="res://textures/image/eye_tile_R.png" id="25_tkant"]
 [ext_resource type="Material" uid="uid://bfjpvlwy3yhte" path="res://textures/materials/HallwayMaterialSection01_floor.tres" id="mat_s01_floor"]
 [ext_resource type="Material" uid="uid://dnf61epo0o5jp" path="res://textures/materials/HallwayMaterialSection01_right_wall.tres" id="mat_s01_right_wall"]
@@ -1245,10 +1244,7 @@ spot_angle = 30.0
 script = ExtResource("21_dv5t0")
 light_groups = Array[String](["Blue", "BackRing"])
 
-[node name="sanity" type="Node" parent="ChaseHeart/LightController"]
-script = ExtResource("25_fan8s")
-
-[node name="OscClockReceiver" type="Node" parent="ChaseHeart/LightController/sanity"]
+[node name="OscClockReceiver" type="Node" parent="ChaseHeart/LightController"]
 script = ExtResource("18_vd7vh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ChaseHeart"]
