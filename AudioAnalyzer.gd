@@ -2,6 +2,7 @@ extends AudioStreamPlayer
 class_name SpectrumAudioAnalyzer
 
 signal spectrum_cues(bass: float, mid: float, treble: float, beat: bool, pulse: bool, movement: float)
+signal standardized_cues(payload: Dictionary)
 
 @export var mic_bus_name: String = "Mic"
 @export var force_input_device: String = "Microphone (HyperX QuadCast)"
@@ -62,6 +63,9 @@ var _movement_s: float = 0.0
 
 # Loudness normalization state (raw pre-gain energy EMA)
 var _loudness_ema: float = 0.0
+
+# Rolling energy variance (EMA of squared deviation)
+var _energy_var_ema: float = 0.0
 
 # Debug timer
 var _dbg_t: float = 0.0
@@ -147,6 +151,38 @@ func _process(delta: float) -> void:
 	var movement: float = _energy_s - prev_energy
 	_movement_s = lerpf(_movement_s, movement, 0.35)
 
+	# --- 9) Rolling variance of total energy (for low/high variance cues) ---
+	var energy_dev: float = energy - _energy_s
+	_energy_var_ema = lerpf(_energy_var_ema, energy_dev * energy_dev, 0.15)
+
+	# --- 10) Standardized feature payload ---
+	var total_energy: float = _b_s + _m_s + _t_s
+	var total_safe: float = maxf(total_energy, 0.000001)
+	var bass_ratio: float = _b_s / total_safe
+	var mid_ratio: float = _m_s / total_safe
+	var treble_ratio: float = _t_s / total_safe
+	var energy_delta: float = total_energy - prev_energy
+	var band_variance: float = ((_b_s - total_energy / 3.0) * (_b_s - total_energy / 3.0)
+		+ (_m_s - total_energy / 3.0) * (_m_s - total_energy / 3.0)
+		+ (_t_s - total_energy / 3.0) * (_t_s - total_energy / 3.0)) / 3.0
+	var band_balance: float = 1.0 - clampf(band_variance / maxf(total_energy * total_energy, 0.000001), 0.0, 1.0)
+
+	var standardized := {
+		"bass": _b_s,
+		"mid": _m_s,
+		"treble": _t_s,
+		"total_energy": total_energy,
+		"energy_delta": energy_delta,
+		"movement": _movement_s,
+		"energy_variance": _energy_var_ema,
+		"bass_ratio": bass_ratio,
+		"mid_ratio": mid_ratio,
+		"treble_ratio": treble_ratio,
+		"band_balance": band_balance,
+		"beat": beat,
+		"pulse": pulse
+	}
+
 	# --- 9) Debug output ---
 	if debug_print:
 		_dbg_t += delta
@@ -164,6 +200,7 @@ func _process(delta: float) -> void:
 			)
 
 	spectrum_cues.emit(_b_s, _m_s, _t_s, beat, pulse, _movement_s)
+	standardized_cues.emit(standardized)
 
 
 func _band_energy(lo_hz: float, hi_hz: float) -> float:

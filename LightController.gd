@@ -20,6 +20,7 @@ func _ready() -> void:
 
 	if _analyzer != null:
 		_analyzer.spectrum_cues.connect(_on_spectrum_cues)
+		_analyzer.standardized_cues.connect(_on_standardized_cues)
 	else:
 		push_warning("LightController: SpectrumAudioAnalyzer not found.")
 
@@ -51,6 +52,10 @@ func _on_spectrum_cues(bass: float, mid: float, treble: float, beat: bool, pulse
 	)
 
 
+func _on_standardized_cues(payload: Dictionary) -> void:
+	_log_event("audio", "standardized_cues", payload)
+
+
 func _log_event(source: String, event_name: String, payload: Dictionary) -> void:
 	var entry := {
 		"source": source,
@@ -59,6 +64,22 @@ func _log_event(source: String, event_name: String, payload: Dictionary) -> void
 		"timestamp_ms": Time.get_ticks_msec()
 	}
 	print(JSON.stringify(entry))
+	print("[%s]:[%s]:%s" % [source, event_name, _format_payload(payload)])
+
+
+func _format_payload(payload: Dictionary) -> String:
+	if payload.is_empty():
+		return ""
+	var keys := payload.keys()
+	keys.sort()
+	var parts: Array[String] = []
+	for key in keys:
+		var value = payload[key]
+		if value is float:
+			parts.append("%s=%s" % [key, snappedf(value, 0.0001)])
+		else:
+			parts.append("%s=%s" % [key, value])
+	return "{" + ", ".join(parts) + "}"
 
 
 func _get_osc() -> OscClockReceiver:
