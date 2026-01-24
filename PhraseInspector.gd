@@ -277,6 +277,9 @@ func _update_state(candidate: String, scores: Dictionary) -> void:
 	if candidate == STATE_SILENCE and _current_state != STATE_SILENCE:
 		_set_state(STATE_SILENCE)
 		return
+	if _current_state == STATE_SILENCE and candidate != STATE_SILENCE:
+		_set_state(candidate)
+		return
 	if _current_state == STATE_IMPACT:
 		if candidate == STATE_SILENCE:
 			_set_state(STATE_SILENCE)
@@ -316,6 +319,8 @@ func _set_state(next_state: String) -> void:
 
 func _min_beats_for(state: String) -> int:
 	match state:
+		STATE_SILENCE:
+			return 0
 		STATE_IMPACT:
 			return 2
 		STATE_DROP:
