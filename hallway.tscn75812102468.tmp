@@ -1248,7 +1248,7 @@ light_groups = Array[String](["Blue", "BackRing"])
 [node name="sanity" type="Node" parent="ChaseHeart/LightController"]
 script = ExtResource("25_fan8s")
 
-[node name="OscClockReceiver" type="Node" parent="ChaseHeart/LightController/sanity"]
+[node name="OsClockReceiver" type="Node" parent="ChaseHeart/LightController/sanity"]
 script = ExtResource("18_vd7vh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ChaseHeart"]

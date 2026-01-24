@@ -129,7 +129,7 @@ func _collect_nodes() -> void:
 
 	var stack: Array[Node] = [root]
 	while !stack.is_empty():
-		var node := stack.pop_back()
+		var node :Node = stack.pop_back()
 		if node is PartyLight:
 			_lights.append(node)
 		elif node is RingRotator:

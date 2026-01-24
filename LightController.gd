@@ -40,12 +40,14 @@ func _process(delta: float) -> void:
 func _on_spec(bass: float, mid: float, treble: float, beat: bool, pulse: bool, movement: float) -> void:
 	# you already see this print - keep it
 	if beat or pulse:
-		print("bass=", snappedf(bass, 0.001),
-			  " mid=", snappedf(mid, 0.001),
-			  " treble=", snappedf(treble, 0.001),
-			  " beat=", beat,
-			  " pulse=", pulse,
-			  " move=", snappedf(movement, 0.0001))
+		var x: int
+		x =1
+		#print("bass=", snappedf(bass, 0.001),
+			  #" mid=", snappedf(mid, 0.001),
+			  #" treble=", snappedf(treble, 0.001),
+			  #" beat=", beat,
+			  #" pulse=", pulse,
+			  #" move=", snappedf(movement, 0.0001))
 
 	# For now: fire on either cue so we can validate the pipeline
 	if (pulse or beat) and _strobe != null and _pulse_cd <= 0.0:

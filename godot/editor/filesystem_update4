@@ -1,13 +1,7 @@
 res://bus_layout.tres
 res://hallway.tscn
 res://outerrightWall.gdshader
-res://CrystalFace.gdshader
-res://Strobe.gd
-res://StrobeLight.gd
+res://ShowManager.gd
+res://os_clock_reciever.gd
+res://sanity.gd
 res://LightController.gd
-res://AudioAnalyzer.gd
-res://textures/materials/HallwayMaterialSection01_right_wall.tres
-res://PartyLight.gd
-res://ChaseHeart.gd
-res://PlayerScript.gd
-res://PartyLightRing.gd
