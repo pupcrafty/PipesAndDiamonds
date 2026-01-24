@@ -5,3 +5,4 @@ res://ShowManager.gd
 res://os_clock_reciever.gd
 res://sanity.gd
 res://LightController.gd
+res://AudioAnalyzer.gd

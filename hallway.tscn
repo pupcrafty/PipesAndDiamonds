@@ -1024,7 +1024,7 @@ script = ExtResource("2_g8fis")
 [node name="ShowManager" type="Node" parent="ChaseHeart/LightController"]
 script = ExtResource("22_6v4y4")
 
-[node name="MicPlayer" type="AudioStreamPlayer" parent="ChaseHeart/LightController"]
+[node name="AudioAnalyzer" type="AudioStreamPlayer" parent="ChaseHeart/LightController"]
 stream = SubResource("AudioStreamMicrophone_g8fis")
 autoplay = true
 bus = &"Mic"
