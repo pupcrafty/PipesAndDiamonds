@@ -119,8 +119,17 @@ func _on_standardized_cues(payload: Dictionary) -> void:
 	_energy_ema = lerpf(_energy_ema, total_energy, energy_smooth)
 	_movement_ema = lerpf(_movement_ema, movement, trend_smooth)
 	_variance_ema = lerpf(_variance_ema, variance, trend_smooth)
-	_beat_ema = lerpf(_beat_ema, beat ? 1.0 : 0.0, beat_smooth)
-	_pulse_ema = lerpf(_pulse_ema, pulse ? 1.0 : 0.0, beat_smooth)
+	_beat_ema = lerpf(
+		_beat_ema,
+		1.0 if beat else 0.0,
+		beat_smooth
+	)
+
+	_pulse_ema = lerpf(
+		_pulse_ema,
+		1.0 if pulse else 0.0,
+		beat_smooth
+	)
 
 	_bass_ratio_ema = lerpf(_bass_ratio_ema, bass_ratio, energy_smooth)
 	_mid_ratio_ema = lerpf(_mid_ratio_ema, mid_ratio, energy_smooth)
@@ -138,7 +147,7 @@ func _on_standardized_cues(payload: Dictionary) -> void:
 	_last_centroid_proxy = _centroid_proxy
 
 	var variance_norm := _variance_ema / maxf(_energy_ema * _energy_ema, 0.000001)
-	var spectral_shift := (
+	var spectral_shift : float = (
 		abs(_bass_ratio_ema - _bass_ratio_long)
 		+ abs(_mid_ratio_ema - _mid_ratio_long)
 		+ abs(_treble_ratio_ema - _treble_ratio_long)
