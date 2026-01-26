@@ -24,20 +24,27 @@ func _ready() -> void:
 		_osc.beat.connect(_on_osc_beat)
 		_osc.bpm_changed.connect(_on_osc_bpm_changed)
 		_osc.confidence_changed.connect(_on_osc_confidence_changed)
+		if _osc.has_signal("spectrum_cues"):
+			_osc.spectrum_cues.connect(_on_spectrum_cues)
+		if _osc.has_signal("standardized_cues"):
+			_osc.standardized_cues.connect(_on_standardized_cues)
+		if _osc.has_signal("phrase_changed"):
+			_osc.phrase_changed.connect(_on_phrase_changed)
 	else:
 		push_warning("LightController: OscClockReceiver not found.")
 
-	if _analyzer != null:
-		_analyzer.spectrum_cues.connect(_on_spectrum_cues)
-		_analyzer.standardized_cues.connect(_on_standardized_cues)
-	else:
-		push_warning("LightController: SpectrumAudioAnalyzer not found.")
+	if _osc == null:
+		if _analyzer != null:
+			_analyzer.spectrum_cues.connect(_on_spectrum_cues)
+			_analyzer.standardized_cues.connect(_on_standardized_cues)
+		else:
+			push_warning("LightController: SpectrumAudioAnalyzer not found.")
 
-	_phrase_detector = _get_phrase_detector()
-	if _phrase_detector != null:
-		_phrase_detector.phrase_changed.connect(_on_phrase_changed)
-	else:
-		push_warning("LightController: PhraseInspector not found.")
+		_phrase_detector = _get_phrase_detector()
+		if _phrase_detector != null:
+			_phrase_detector.phrase_changed.connect(_on_phrase_changed)
+		else:
+			push_warning("LightController: PhraseInspector not found.")
 
 
 func _on_osc_beat(beat_id: int) -> void:
