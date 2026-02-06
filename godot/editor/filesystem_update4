@@ -1,9 +1,6 @@
 res://bus_layout.tres
 res://hallway.tscn
 res://outerrightWall.gdshader
-res://ShowManager.gd
 res://os_clock_reciever.gd
-res://sanity.gd
-res://LightController.gd
-res://AudioAnalyzer.gd
-res://PhraseInspector.gd
+res://ChaseHeart.gd
+res://PlayerScript.gd

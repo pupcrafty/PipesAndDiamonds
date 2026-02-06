@@ -222,7 +222,7 @@ func _handle_message(msg: OscMsg) -> void:
 
 		"/phrase/current":
 			if args.size() >= 1 and args[0] is String:
-				var phrase := args[0]
+				var phrase : String = args[0]
 				if phrase != _current_phrase:
 					_current_phrase = phrase
 					emit_signal("phrase_changed", phrase)
