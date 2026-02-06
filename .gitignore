@@ -1,3 +1,32 @@
 # Godot 4+ specific ignores
 .godot/
+.import/
+.mono/
 /android/
+/.export/
+/godot/editor/
+/godot/*cache*
+/godot/uid_cache.bin
+/godot/global_script_class_cache.cfg
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Godot generated config and uid artifacts
+*.cfg
+*.uid
+
+# Local env files (keep real config tracked)
+.env
+.env.*

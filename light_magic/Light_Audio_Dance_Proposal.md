@@ -80,6 +80,19 @@ The display cycles scenes over time. Each scene reweights mappings or introduces
 - Ring rotation: faster: `ring_rot_speed = bpm * 0.4`
 - Strobe: frequent light pings on `audio/pulse`
 
+### Scene F: “Mix Madness”
+- Emphasis: a hybrid of A/B/C where each color channel follows a different scene’s weighting.
+- On enter, randomly assign scene weight profiles to color channels:
+  - Example: `R = Scene A weights`, `G = Scene B weights`, `B = Scene C weights`
+  - Shuffle this assignment every time the scene starts.
+- PartyLight energy per color channel:
+  - `R = (bass * A_r) + (mid * A_g) + (treble * A_b)` using Scene A multipliers
+  - `G = (bass * B_r) + (mid * B_g) + (treble * B_b)` using Scene B multipliers
+  - `B = (bass * C_r) + (mid * C_g) + (treble * C_b)` using Scene C multipliers
+- Z sweep: use the dominant channel’s scene rule (the channel with highest output that frame).
+- Ring rotation: medium-fast: `ring_rot_speed = bpm * 0.3`
+- Strobe: pulse on `audio/beat`, plus occasional `audio/pulse` if treble presence is high.
+
 ### Scene D: “Energy Surge”
 - Trigger when `total_energy > 1.2` and `movement > 0.2`
 - PartyLight energy: `total_energy * 2.2`
