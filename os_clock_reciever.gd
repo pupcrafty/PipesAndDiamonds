@@ -4,6 +4,9 @@ class_name OscClockReceiver
 signal bpm_changed(bpm: float)
 signal confidence_changed(confidence: float)
 signal beat(beat_id: int)
+signal spectrum_cues(bass: float, mid: float, treble: float, beat: bool, pulse: bool, movement: float)
+signal standardized_cues(payload: Dictionary)
+signal phrase_changed(phrase: String)
 
 @export var listen_port: int = 9000
 
@@ -12,6 +15,22 @@ var udp: PacketPeerUDP = PacketPeerUDP.new()
 var bpm: float = 120.0
 var confidence: float = 0.0
 var beat_id: int = 0
+var _audio_payload: Dictionary = {
+	"bass": 0.0,
+	"mid": 0.0,
+	"treble": 0.0,
+	"beat": false,
+	"pulse": false,
+	"movement": 0.0,
+	"total_energy": 0.0,
+	"energy_delta": 0.0,
+	"energy_variance": 0.0,
+	"bass_ratio": 0.0,
+	"mid_ratio": 0.0,
+	"treble_ratio": 0.0,
+	"band_balance": 0.0
+}
+var _current_phrase: String = ""
 
 func _ready() -> void:
 	var err: int = udp.bind(listen_port)
@@ -168,6 +187,46 @@ func _handle_message(msg: OscMsg) -> void:
 			# optional: float unix time; ignore or use for diagnostics
 			pass
 
+		"/audio/standardized":
+			if args.size() >= 1 and args[0] is String:
+				var parsed: Variant = JSON.parse_string(args[0])
+				if parsed is Dictionary:
+					_apply_standardized_payload(parsed)
+
+		"/audio/bass":
+			_update_audio_payload("bass", args)
+		"/audio/mid":
+			_update_audio_payload("mid", args)
+		"/audio/treble":
+			_update_audio_payload("treble", args)
+		"/audio/beat":
+			_update_audio_payload("beat", args)
+		"/audio/pulse":
+			_update_audio_payload("pulse", args)
+		"/audio/movement":
+			_update_audio_payload("movement", args)
+		"/audio/total_energy":
+			_update_audio_payload("total_energy", args)
+		"/audio/energy_delta":
+			_update_audio_payload("energy_delta", args)
+		"/audio/energy_variance":
+			_update_audio_payload("energy_variance", args)
+		"/audio/bass_ratio":
+			_update_audio_payload("bass_ratio", args)
+		"/audio/mid_ratio":
+			_update_audio_payload("mid_ratio", args)
+		"/audio/treble_ratio":
+			_update_audio_payload("treble_ratio", args)
+		"/audio/band_balance":
+			_update_audio_payload("band_balance", args)
+
+		"/phrase/current":
+			if args.size() >= 1 and args[0] is String:
+				var phrase := args[0]
+				if phrase != _current_phrase:
+					_current_phrase = phrase
+					emit_signal("phrase_changed", phrase)
+
 		_:
 			# Uncomment for debugging:
 			# print("OSC:", address, args)
@@ -240,3 +299,32 @@ func _read_f32(data: PackedByteArray, idx: int) -> float:
 	sp.data_array = bytes
 	sp.seek(0)
 	return sp.get_float()
+
+
+func _apply_standardized_payload(payload: Dictionary) -> void:
+	for key in payload.keys():
+		_audio_payload[key] = payload[key]
+	_emit_audio_signals()
+
+
+func _update_audio_payload(key: String, args: Array[Variant]) -> void:
+	if args.size() < 1:
+		return
+	var value: Variant = args[0]
+	if key == "beat" or key == "pulse":
+		_audio_payload[key] = bool(value) if value is bool else (float(value) > 0.0)
+	else:
+		_audio_payload[key] = float(value)
+	_emit_audio_signals()
+
+
+func _emit_audio_signals() -> void:
+	standardized_cues.emit(_audio_payload.duplicate())
+	spectrum_cues.emit(
+		float(_audio_payload.get("bass", 0.0)),
+		float(_audio_payload.get("mid", 0.0)),
+		float(_audio_payload.get("treble", 0.0)),
+		bool(_audio_payload.get("beat", false)),
+		bool(_audio_payload.get("pulse", false)),
+		float(_audio_payload.get("movement", 0.0))
+	)
