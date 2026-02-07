@@ -1,29 +1,449 @@
-[gd_scene load_steps=19 format=3 uid="uid://dbtk33ypckjjh"]
+[gd_scene format=3 uid="uid://dbtk33ypckjjh"]
 
-[ext_resource type="Texture2D" uid="uid://oymxuridoswj" path="res://textures/atlas/HalwayAtlasCeling1.tres" id="1_fvqyu"]
 [ext_resource type="Script" uid="uid://c1xbobwkhqjvu" path="res://ChaseHeart.gd" id="1_pau2p"]
 [ext_resource type="Script" uid="uid://crjamb6afgbyb" path="res://PlayerScript.gd" id="1_ue1jw"]
 [ext_resource type="Script" uid="uid://cj0jp3sy54cmm" path="res://EdgePointScript.gd" id="2_eacex"]
-[ext_resource type="Script" uid="uid://c6wi1xkwwwlkf" path="res://LightController.gd" id="2_g8fis"]
-[ext_resource type="Material" uid="uid://c48iw1ffa76yw" path="res://textures/materials/CelingMaterial1.tres" id="2_vie2r"]
-[ext_resource type="ArrayMesh" uid="uid://bhnrcchged64n" path="res://low_poly_heart.obj" id="4_20ugn"]
-[ext_resource type="Script" uid="uid://bj1ooqu8y8cgv" path="res://AudioAnalyzer.gd" id="5_pjjw4"]
+[ext_resource type="Material" uid="uid://q7sc803fitlm" path="res://textures/materials/outerRightWall.tres" id="4_pj518"]
 [ext_resource type="Script" uid="uid://ckobbdog5livv" path="res://PivotController.gd" id="9_sh5jk"]
+[ext_resource type="Script" uid="uid://hu20y2oxuo2s" path="res://Strobe.gd" id="19_tkant"]
+[ext_resource type="Script" uid="uid://diphqsvs2ok52" path="res://StrobeLight.gd" id="20_v4qe2"]
+[ext_resource type="Script" uid="uid://dfyfw54dyp73u" path="res://PartyLight.gd" id="21_dv5t0"]
+[ext_resource type="Script" uid="uid://yhyk383q1bme" path="res://PartyLightRing.gd" id="21_pe2g8"]
+[ext_resource type="Texture2D" uid="uid://krokg4nstq8e" path="res://textures/image/eye_tile_B.png" id="23_j6x25"]
+[ext_resource type="Texture2D" uid="uid://ctfqlmlh74qwr" path="res://textures/image/eye_tile_G.png" id="24_5wm5s"]
+[ext_resource type="Script" uid="uid://bf5eqwqi8uap5" path="res://eye_sphere.gd" id="24_pe2g8"]
+[ext_resource type="Script" uid="uid://dk5b17el4o3ep" path="res://light_magic/AudioServiceListener.gd" id="24_xkbh0"]
+[ext_resource type="Texture2D" uid="uid://casui88ub007r" path="res://textures/image/eye_tile_R.png" id="25_tkant"]
+[ext_resource type="Script" uid="uid://bj4gqnal4ush6" path="res://light_magic/audio_service_osc.gd" id="25_vd7vh"]
+[ext_resource type="Script" uid="uid://hud5qvonxtob" path="res://light_magic/LightAudioDirector.gd" id="26_light_audio_director"]
+[ext_resource type="Material" uid="uid://bfjpvlwy3yhte" path="res://textures/materials/HallwayMaterialSection01_floor.tres" id="mat_s01_floor"]
+[ext_resource type="Material" uid="uid://dnf61epo0o5jp" path="res://textures/materials/HallwayMaterialSection01_right_wall.tres" id="mat_s01_right_wall"]
+[ext_resource type="Texture2D" uid="uid://lqyk8tnkss4r" path="res://textures/image/large_tile_00.png" id="tile_00"]
+[ext_resource type="Texture2D" uid="uid://yanlvnd2kgrm" path="res://textures/image/large_tile_01.png" id="tile_01"]
+[ext_resource type="Texture2D" uid="uid://ci2x6byxnyo3u" path="res://textures/image/large_tile_02.png" id="tile_02"]
+[ext_resource type="Texture2D" uid="uid://cm4tv0wj0bc28" path="res://textures/image/large_tile_03.png" id="tile_03"]
+[ext_resource type="Texture2D" uid="uid://73vb5rmndhj3" path="res://textures/image/large_tile_04.png" id="tile_04"]
+[ext_resource type="Texture2D" uid="uid://by8cqu1prlak1" path="res://textures/image/large_tile_05.png" id="tile_05"]
+[ext_resource type="Texture2D" uid="uid://dbhclcti2y5e7" path="res://textures/image/large_tile_06.png" id="tile_06"]
+[ext_resource type="Texture2D" uid="uid://mf75qult3gko" path="res://textures/image/large_tile_07.png" id="tile_07"]
+[ext_resource type="Texture2D" uid="uid://b8v687hcx6jgj" path="res://textures/image/large_tile_08.png" id="tile_08"]
+[ext_resource type="Texture2D" uid="uid://cjj5muf02ykru" path="res://textures/image/large_tile_09.png" id="tile_09"]
+[ext_resource type="Texture2D" uid="uid://cvp8hxu8xvso5" path="res://textures/image/large_tile_10.png" id="tile_10"]
+[ext_resource type="Texture2D" uid="uid://pid0u1upjj0o" path="res://textures/image/large_tile_11.png" id="tile_11"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbafg"]
-albedo_texture = ExtResource("1_fvqyu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s01_left_wall"]
+atlas = ExtResource("tile_00")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s01_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s01_left_wall")
 texture_filter = 1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ue1jw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s01_ceiling"]
+atlas = ExtResource("tile_00")
+region = Rect2(0, 0, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eacex"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s01_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s01_ceiling")
+texture_filter = 1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm6c6"]
-uv1_scale = Vector3(0.5, 0.5, 0.5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s02_floor"]
+atlas = ExtResource("tile_01")
+region = Rect2(0, 720, 5400, 720)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7rl0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s02_floor")
+texture_filter = 1
 
-[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_g8fis"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s02_left_wall"]
+atlas = ExtResource("tile_01")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s02_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s02_right_wall"]
+atlas = ExtResource("tile_01")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s02_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s02_ceiling"]
+atlas = ExtResource("tile_01")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s02_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s02_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s03_floor"]
+atlas = ExtResource("tile_02")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s03_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s03_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s03_left_wall"]
+atlas = ExtResource("tile_02")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s03_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s03_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s03_right_wall"]
+atlas = ExtResource("tile_02")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s03_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s03_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s03_ceiling"]
+atlas = ExtResource("tile_02")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s03_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s03_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s04_floor"]
+atlas = ExtResource("tile_03")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s04_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s04_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s04_left_wall"]
+atlas = ExtResource("tile_03")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s04_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s04_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s04_right_wall"]
+atlas = ExtResource("tile_03")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s04_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s04_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s04_ceiling"]
+atlas = ExtResource("tile_03")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s04_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s04_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s05_floor"]
+atlas = ExtResource("tile_04")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s05_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s05_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s05_left_wall"]
+atlas = ExtResource("tile_04")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s05_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s05_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s05_right_wall"]
+atlas = ExtResource("tile_04")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s05_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s05_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s05_ceiling"]
+atlas = ExtResource("tile_04")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s05_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s05_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s06_floor"]
+atlas = ExtResource("tile_05")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s06_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s06_left_wall"]
+atlas = ExtResource("tile_05")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s06_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s06_right_wall"]
+atlas = ExtResource("tile_05")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s06_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s06_ceiling"]
+atlas = ExtResource("tile_05")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s06_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s07_floor"]
+atlas = ExtResource("tile_06")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s07_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s07_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s07_left_wall"]
+atlas = ExtResource("tile_06")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s07_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s07_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s07_right_wall"]
+atlas = ExtResource("tile_06")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s07_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s07_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s07_ceiling"]
+atlas = ExtResource("tile_06")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s07_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s07_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s08_floor"]
+atlas = ExtResource("tile_07")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s08_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s08_left_wall"]
+atlas = ExtResource("tile_07")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s08_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s08_right_wall"]
+atlas = ExtResource("tile_07")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s08_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s08_ceiling"]
+atlas = ExtResource("tile_07")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s08_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s08_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s09_floor"]
+atlas = ExtResource("tile_08")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s09_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s09_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s09_left_wall"]
+atlas = ExtResource("tile_08")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s09_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s09_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s09_right_wall"]
+atlas = ExtResource("tile_08")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s09_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s09_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s09_ceiling"]
+atlas = ExtResource("tile_08")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s09_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s09_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s10_floor"]
+atlas = ExtResource("tile_09")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s10_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s10_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s10_left_wall"]
+atlas = ExtResource("tile_09")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s10_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s10_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s10_right_wall"]
+atlas = ExtResource("tile_09")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s10_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s10_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s10_ceiling"]
+atlas = ExtResource("tile_09")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s10_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s10_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s11_floor"]
+atlas = ExtResource("tile_10")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s11_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s11_left_wall"]
+atlas = ExtResource("tile_10")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s11_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s11_right_wall"]
+atlas = ExtResource("tile_10")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s11_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s11_ceiling"]
+atlas = ExtResource("tile_10")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s11_ceiling")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s12_floor"]
+atlas = ExtResource("tile_11")
+region = Rect2(0, 720, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s12_floor"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s12_floor")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s12_left_wall"]
+atlas = ExtResource("tile_11")
+region = Rect2(0, 1440, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s12_left_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s12_left_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s12_right_wall"]
+atlas = ExtResource("tile_11")
+region = Rect2(0, 2160, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s12_right_wall"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s12_right_wall")
+texture_filter = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s12_ceiling"]
+atlas = ExtResource("tile_11")
+region = Rect2(0, 0, 5400, 720)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s12_ceiling"]
+transparency = 1
+albedo_texture = SubResource("AtlasTexture_s12_ceiling")
+texture_filter = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w3kui"]
 
@@ -31,716 +451,1321 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ue1jw"]
 
-[node name="Hallway" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4qe2"]
+transparency = 1
+albedo_texture = ExtResource("23_j6x25")
 
-[node name="Section1" type="Node3D" parent="."]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv5t0"]
+transparency = 1
+albedo_texture = ExtResource("24_5wm5s")
 
-[node name="floor" type="CSGBox3D" parent="Section1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pe2g8"]
+transparency = 1
+albedo_texture = ExtResource("25_tkant")
+
+[node name="Hallway" type="Node3D" unique_id=778755213]
+
+[node name="Section1" type="Node3D" parent="." unique_id=655225281]
+
+[node name="floor" type="CSGBox3D" parent="Section1" unique_id=207963256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_kbafg")
+material = ExtResource("mat_s01_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section1"]
+[node name="left wall" type="CSGBox3D" parent="Section1" unique_id=1401040819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s01_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section1"]
+[node name="right wall" type="CSGBox3D" parent="Section1" unique_id=2122572318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = ExtResource("mat_s01_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section1"]
+[node name="celing" type="CSGBox3D" parent="Section1" unique_id=2122479556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = ExtResource("2_vie2r")
+material = SubResource("StandardMaterial3D_s01_ceiling")
 
-[node name="Section2" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section1" unique_id=1597861841]
+
+[node name="floor" type="CSGBox3D" parent="Section1/OuterWalls" unique_id=1579156207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section1/OuterWalls" unique_id=1831171443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section1/OuterWalls" unique_id=709104788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section1/OuterWalls" unique_id=2089241126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section2" type="Node3D" parent="." unique_id=2109926494]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 0, -27)
 
-[node name="floor" type="CSGBox3D" parent="Section2"]
+[node name="floor" type="CSGBox3D" parent="Section2" unique_id=356510184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s02_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section2"]
+[node name="left wall" type="CSGBox3D" parent="Section2" unique_id=469615380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s02_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section2"]
+[node name="right wall" type="CSGBox3D" parent="Section2" unique_id=555244148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s02_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section2"]
+[node name="celing" type="CSGBox3D" parent="Section2" unique_id=695289740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s02_ceiling")
 
-[node name="Section3" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section2" unique_id=953164902]
+
+[node name="floor" type="CSGBox3D" parent="Section2/OuterWalls" unique_id=872232258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section2/OuterWalls" unique_id=1966948002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section2/OuterWalls" unique_id=168576748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section2/OuterWalls" unique_id=2110891900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section3" type="Node3D" parent="." unique_id=2094728617]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34, 0, -20)
 
-[node name="floor" type="CSGBox3D" parent="Section3"]
+[node name="floor" type="CSGBox3D" parent="Section3" unique_id=401363305]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s03_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section3"]
+[node name="left wall" type="CSGBox3D" parent="Section3" unique_id=1954344250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s03_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section3"]
+[node name="right wall" type="CSGBox3D" parent="Section3" unique_id=1729387774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s03_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section3"]
+[node name="celing" type="CSGBox3D" parent="Section3" unique_id=1674842399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s03_ceiling")
 
-[node name="Section4" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section3" unique_id=1029727874]
+
+[node name="floor" type="CSGBox3D" parent="Section3/OuterWalls" unique_id=381879126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section3/OuterWalls" unique_id=446931865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section3/OuterWalls" unique_id=1829543210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section3/OuterWalls" unique_id=944010317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section4" type="Node3D" parent="." unique_id=1122191491]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 0, 7)
 
-[node name="floor" type="CSGBox3D" parent="Section4"]
+[node name="floor" type="CSGBox3D" parent="Section4" unique_id=1049471645]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s04_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section4"]
+[node name="left wall" type="CSGBox3D" parent="Section4" unique_id=1302113810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s04_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section4"]
+[node name="right wall" type="CSGBox3D" parent="Section4" unique_id=1010745641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s04_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section4"]
+[node name="celing" type="CSGBox3D" parent="Section4" unique_id=1907948248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s04_ceiling")
 
-[node name="Section5" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section4" unique_id=565006617]
+
+[node name="floor" type="CSGBox3D" parent="Section4/OuterWalls" unique_id=989725324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section4/OuterWalls" unique_id=191267371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section4/OuterWalls" unique_id=1281241132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section4/OuterWalls" unique_id=1839409478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section5" type="Node3D" parent="." unique_id=593181424]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 9, 5)
 
-[node name="floor" type="CSGBox3D" parent="Section5"]
+[node name="floor" type="CSGBox3D" parent="Section5" unique_id=958654238]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s05_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section5"]
+[node name="left wall" type="CSGBox3D" parent="Section5" unique_id=70143247]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s05_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section5"]
+[node name="right wall" type="CSGBox3D" parent="Section5" unique_id=1057026572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s05_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section5"]
+[node name="celing" type="CSGBox3D" parent="Section5" unique_id=1842547173]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s05_ceiling")
 
-[node name="Section6" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section5" unique_id=494294827]
+
+[node name="floor" type="CSGBox3D" parent="Section5/OuterWalls" unique_id=872546797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section5/OuterWalls" unique_id=1447765675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section5/OuterWalls" unique_id=1390821001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section5/OuterWalls" unique_id=1494887574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section6" type="Node3D" parent="." unique_id=485317651]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 9, -29)
 
-[node name="floor" type="CSGBox3D" parent="Section6"]
+[node name="floor" type="CSGBox3D" parent="Section6" unique_id=1873401522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s06_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section6"]
+[node name="left wall" type="CSGBox3D" parent="Section6" unique_id=853640119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s06_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section6"]
+[node name="right wall" type="CSGBox3D" parent="Section6" unique_id=2052010393]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s06_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section6"]
+[node name="celing" type="CSGBox3D" parent="Section6" unique_id=825604496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s06_ceiling")
 
-[node name="Section7" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section6" unique_id=1059462987]
+
+[node name="floor" type="CSGBox3D" parent="Section6/OuterWalls" unique_id=888883765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section6/OuterWalls" unique_id=2093205841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section6/OuterWalls" unique_id=366645318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section6/OuterWalls" unique_id=1865982716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section7" type="Node3D" parent="." unique_id=1459037481]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 34, 9, 5)
 
-[node name="floor" type="CSGBox3D" parent="Section7"]
+[node name="floor" type="CSGBox3D" parent="Section7" unique_id=1413522191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s07_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section7"]
+[node name="left wall" type="CSGBox3D" parent="Section7" unique_id=790948490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s07_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section7"]
+[node name="right wall" type="CSGBox3D" parent="Section7" unique_id=130660230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s07_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section7"]
+[node name="celing" type="CSGBox3D" parent="Section7" unique_id=1206180142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s07_ceiling")
 
-[node name="Section8" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section7" unique_id=848346586]
+
+[node name="floor" type="CSGBox3D" parent="Section7/OuterWalls" unique_id=915860939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section7/OuterWalls" unique_id=936522448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section7/OuterWalls" unique_id=970769841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section7/OuterWalls" unique_id=2086145273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section8" type="Node3D" parent="." unique_id=1706703034]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 34, 9, -29)
 
-[node name="floor" type="CSGBox3D" parent="Section8"]
+[node name="floor" type="CSGBox3D" parent="Section8" unique_id=1329654331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s08_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section8"]
+[node name="left wall" type="CSGBox3D" parent="Section8" unique_id=2041744413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s08_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section8"]
+[node name="right wall" type="CSGBox3D" parent="Section8" unique_id=1324716930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s08_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section8"]
+[node name="celing" type="CSGBox3D" parent="Section8" unique_id=331939939]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s08_ceiling")
 
-[node name="Section9" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section8" unique_id=398427773]
+
+[node name="floor" type="CSGBox3D" parent="Section8/OuterWalls" unique_id=1478465640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section8/OuterWalls" unique_id=744033271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section8/OuterWalls" unique_id=1254439389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section8/OuterWalls" unique_id=1310718915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section9" type="Node3D" parent="." unique_id=649876504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34, 0)
 
-[node name="floor" type="CSGBox3D" parent="Section9"]
+[node name="floor" type="CSGBox3D" parent="Section9" unique_id=356903222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s09_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section9"]
+[node name="left wall" type="CSGBox3D" parent="Section9" unique_id=1807270130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s09_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section9"]
+[node name="right wall" type="CSGBox3D" parent="Section9" unique_id=2080869663]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s09_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section9"]
+[node name="celing" type="CSGBox3D" parent="Section9" unique_id=359834022]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s09_ceiling")
 
-[node name="Section10" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section9" unique_id=864265985]
+
+[node name="floor" type="CSGBox3D" parent="Section9/OuterWalls" unique_id=57893874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section9/OuterWalls" unique_id=60122222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section9/OuterWalls" unique_id=7861570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section9/OuterWalls" unique_id=1996653936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section10" type="Node3D" parent="." unique_id=1625849075]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 34, -27)
 
-[node name="floor" type="CSGBox3D" parent="Section10"]
+[node name="floor" type="CSGBox3D" parent="Section10" unique_id=1508474224]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s10_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section10"]
+[node name="left wall" type="CSGBox3D" parent="Section10" unique_id=1426744198]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s10_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section10"]
+[node name="right wall" type="CSGBox3D" parent="Section10" unique_id=688613937]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s10_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section10"]
+[node name="celing" type="CSGBox3D" parent="Section10" unique_id=48336495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s10_ceiling")
 
-[node name="Section11" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section10" unique_id=1604016304]
+
+[node name="floor" type="CSGBox3D" parent="Section10/OuterWalls" unique_id=2107999770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section10/OuterWalls" unique_id=630997473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section10/OuterWalls" unique_id=1335742172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section10/OuterWalls" unique_id=1405541765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section11" type="Node3D" parent="." unique_id=1793887226]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34, 34, -20)
 
-[node name="floor" type="CSGBox3D" parent="Section11"]
+[node name="floor" type="CSGBox3D" parent="Section11" unique_id=1822762904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s11_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section11"]
+[node name="left wall" type="CSGBox3D" parent="Section11" unique_id=936964231]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s11_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section11"]
+[node name="right wall" type="CSGBox3D" parent="Section11" unique_id=1806599045]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s11_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section11"]
+[node name="celing" type="CSGBox3D" parent="Section11" unique_id=617844896]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s11_ceiling")
 
-[node name="Section12" type="Node3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section11" unique_id=343941254]
+
+[node name="floor" type="CSGBox3D" parent="Section11/OuterWalls" unique_id=995024845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section11/OuterWalls" unique_id=1504392394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section11/OuterWalls" unique_id=1654619256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section11/OuterWalls" unique_id=1707498692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="Section12" type="Node3D" parent="." unique_id=1433422173]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 34, 7)
 
-[node name="floor" type="CSGBox3D" parent="Section12"]
+[node name="floor" type="CSGBox3D" parent="Section12" unique_id=1242899513]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_rm6c6")
+material = SubResource("StandardMaterial3D_s12_floor")
 
-[node name="left wall" type="CSGBox3D" parent="Section12"]
+[node name="left wall" type="CSGBox3D" parent="Section12" unique_id=246643893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_ue1jw")
+material = SubResource("StandardMaterial3D_s12_left_wall")
 
-[node name="right wall" type="CSGBox3D" parent="Section12"]
+[node name="right wall" type="CSGBox3D" parent="Section12" unique_id=1084245361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
 size = Vector3(0.2, 4, 30)
-material = SubResource("StandardMaterial3D_eacex")
+material = SubResource("StandardMaterial3D_s12_right_wall")
 
-[node name="celing" type="CSGBox3D" parent="Section12"]
+[node name="celing" type="CSGBox3D" parent="Section12" unique_id=211165413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 size = Vector3(4, 0.2, 30)
-material = SubResource("StandardMaterial3D_n7rl0")
+material = SubResource("StandardMaterial3D_s12_ceiling")
 
-[node name="ChaseHeart" type="CharacterBody3D" parent="."]
+[node name="OuterWalls" type="Node3D" parent="Section12" unique_id=434089214]
+
+[node name="floor" type="CSGBox3D" parent="Section12/OuterWalls" unique_id=1684367627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="left wall" type="CSGBox3D" parent="Section12/OuterWalls" unique_id=1880772841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="right wall" type="CSGBox3D" parent="Section12/OuterWalls" unique_id=610715905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -10)
+size = Vector3(0.2, 6, 28)
+material = ExtResource("4_pj518")
+
+[node name="celing" type="CSGBox3D" parent="Section12/OuterWalls" unique_id=114023157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10)
+size = Vector3(6, 0.2, 28)
+material = ExtResource("4_pj518")
+
+[node name="ChaseHeart" type="CharacterBody3D" parent="." unique_id=582300439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6)
 collision_layer = 8193
 script = ExtResource("1_pau2p")
 
-[node name="LightController" type="Node3D" parent="ChaseHeart"]
-script = ExtResource("2_g8fis")
+[node name="LightController" type="Node3D" parent="ChaseHeart" unique_id=60085545]
 
-[node name="MicPlayer" type="AudioStreamPlayer" parent="ChaseHeart/LightController"]
-stream = SubResource("AudioStreamMicrophone_g8fis")
-autoplay = true
-bus = &"Mic"
-script = ExtResource("5_pjjw4")
+[node name="Strobe" type="Node3D" parent="ChaseHeart/LightController" unique_id=643747910]
+script = ExtResource("19_tkant")
 
-[node name="Strobe" type="Node3D" parent="ChaseHeart/LightController"]
+[node name="OmniLight3D" type="OmniLight3D" parent="ChaseHeart/LightController/Strobe" unique_id=1930383077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 2)
+light_energy = 0.0
+script = ExtResource("20_v4qe2")
 
-[node name="FrontRing" type="Node3D" parent="ChaseHeart/LightController"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="ChaseHeart/LightController/Strobe" unique_id=1587612796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, 2)
+light_energy = 0.0
+script = ExtResource("20_v4qe2")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="ChaseHeart/LightController/Strobe" unique_id=945979296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 2)
+light_energy = 0.0
+script = ExtResource("20_v4qe2")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="ChaseHeart/LightController/Strobe" unique_id=381881116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, 2)
+light_energy = 0.0
+script = ExtResource("20_v4qe2")
+
+[node name="FrontRing" type="Node3D" parent="ChaseHeart/LightController" unique_id=1656193865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+script = ExtResource("21_pe2g8")
 
-[node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController/FrontRing"]
+[node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController/FrontRing" unique_id=1892624509]
 
-[node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
+[node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/GreenLightArray" unique_id=41805045]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "FrontRing"])
 
-[node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
+[node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/GreenLightArray" unique_id=1189015795]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "FrontRing"])
 
-[node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController/FrontRing"]
+[node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController/FrontRing" unique_id=779254242]
 
-[node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, 0.433, 0.25, 0)
+[node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/RedLightArray" unique_id=1238352792]
+transform = Transform3D(0, -0.5, -0.8660254, -7.5710346e-08, -0.8660254, 0.5, -1, 6.556708e-08, -3.7855173e-08, 0.433, 0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "FrontRing"])
 
-[node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, -0.50000006, -0.8660254, 0, -0.8660254, 0.50000006, -1, 2.1855696e-08, 3.7855173e-08, -0.433, -0.25, 0)
+[node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/RedLightArray" unique_id=1457976646]
+transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, -0.433, -0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "FrontRing"])
 
-[node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController/FrontRing"]
+[node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController/FrontRing" unique_id=1645313302]
 
-[node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, 0.50000006, -0.8660254, 0, -0.8660254, -0.50000006, -1, -2.1855696e-08, 3.7855173e-08, 0.433, -0.25, 0)
+[node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/BlueLightArray" unique_id=1996809627]
+transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 0.433, -0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "FrontRing"])
 
-[node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, -0.433, 0.25, 0)
+[node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/FrontRing/BlueLightArray" unique_id=1607614427]
+transform = Transform3D(8.742278e-08, 0.5, -0.8660254, -7.5710346e-08, -0.8660254, -0.5, -1, 1.09278474e-07, -3.7855173e-08, -0.433, 0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "FrontRing"])
 
-[node name="MidRing" type="Node3D" parent="ChaseHeart/LightController"]
+[node name="MidRing" type="Node3D" parent="ChaseHeart/LightController" unique_id=94721144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+script = ExtResource("21_pe2g8")
 
-[node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController/MidRing"]
+[node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController/MidRing" unique_id=1141920950]
 
-[node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
+[node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/GreenLightArray" unique_id=2142441405]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "MidRing"])
 
-[node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
+[node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/GreenLightArray" unique_id=442915638]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "MidRing"])
 
-[node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController/MidRing"]
+[node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController/MidRing" unique_id=194100728]
 
-[node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, 0.433, 0.25, 0)
+[node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/RedLightArray" unique_id=1006311513]
+transform = Transform3D(0, -0.5, -0.8660254, -7.5710346e-08, -0.8660254, 0.5, -1, 6.556708e-08, -3.7855173e-08, 0.433, 0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "MidRing"])
 
-[node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, -0.50000006, -0.8660254, 0, -0.8660254, 0.50000006, -1, 2.1855696e-08, 3.7855173e-08, -0.433, -0.25, 0)
+[node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/RedLightArray" unique_id=2102979271]
+transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, -0.433, -0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "MidRing"])
 
-[node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController/MidRing"]
+[node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController/MidRing" unique_id=1157339086]
 
-[node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, 0.50000006, -0.8660254, 0, -0.8660254, -0.50000006, -1, -2.1855696e-08, 3.7855173e-08, 0.433, -0.25, 0)
+[node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/BlueLightArray" unique_id=2058769452]
+transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 0.433, -0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "MidRing"])
 
-[node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, -0.433, 0.25, 0)
+[node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/MidRing/BlueLightArray" unique_id=1961917621]
+transform = Transform3D(8.742278e-08, 0.5, -0.8660254, -7.5710346e-08, -0.8660254, -0.5, -1, 1.09278474e-07, -3.7855173e-08, -0.433, 0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "MidRing"])
 
-[node name="BackRing" type="Node3D" parent="ChaseHeart/LightController"]
+[node name="BackRing" type="Node3D" parent="ChaseHeart/LightController" unique_id=1025402225]
+script = ExtResource("21_pe2g8")
 
-[node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController/BackRing"]
+[node name="GreenLightArray" type="Node3D" parent="ChaseHeart/LightController/BackRing" unique_id=1115149707]
 
-[node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
+[node name="Green1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/GreenLightArray" unique_id=1960577735]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "BackRing"])
 
-[node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/GreenLightArray"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
+[node name="Green2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/GreenLightArray" unique_id=1404916647]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, -0.5, 0)
 light_color = Color(0, 1, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Green", "BackRing"])
 
-[node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController/BackRing"]
+[node name="RedLightArray" type="Node3D" parent="ChaseHeart/LightController/BackRing" unique_id=1712746768]
 
-[node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, 0.433, 0.25, 0)
+[node name="Red1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/RedLightArray" unique_id=497073643]
+transform = Transform3D(0, -0.5, -0.8660254, -7.5710346e-08, -0.8660254, 0.5, -1, 6.556708e-08, -3.7855173e-08, 0.433, 0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "BackRing"])
 
-[node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/RedLightArray"]
-transform = Transform3D(-4.371139e-08, -0.50000006, -0.8660254, 0, -0.8660254, 0.50000006, -1, 2.1855696e-08, 3.7855173e-08, -0.433, -0.25, 0)
+[node name="Red2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/RedLightArray" unique_id=1596431523]
+transform = Transform3D(-4.371139e-08, 0.5, 0.8660254, 0, 0.8660254, -0.5, -1, -2.1855694e-08, -3.7855173e-08, -0.433, -0.25, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 23.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Red", "BackRing"])
 
-[node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController/BackRing"]
+[node name="BlueLightArray" type="Node3D" parent="ChaseHeart/LightController/BackRing" unique_id=2040990556]
 
-[node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, 0.50000006, -0.8660254, 0, -0.8660254, -0.50000006, -1, -2.1855696e-08, 3.7855173e-08, 0.433, -0.25, 0)
+[node name="Blue1" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/BlueLightArray" unique_id=1211769679]
+transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 0.433, -0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "BackRing"])
 
-[node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/BlueLightArray"]
-transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, -0.433, 0.25, 0)
+[node name="Blue2" type="SpotLight3D" parent="ChaseHeart/LightController/BackRing/BlueLightArray" unique_id=1485466399]
+transform = Transform3D(8.742278e-08, 0.5, -0.8660254, -7.5710346e-08, -0.8660254, -0.5, -1, 1.09278474e-07, -3.7855173e-08, -0.433, 0.25, 0)
 light_color = Color(0, 0, 1, 1)
-light_energy = 0.0
+light_energy = 3.368
 spot_range = 4.0
 spot_angle = 30.0
+script = ExtResource("21_dv5t0")
+light_groups = Array[String](["Blue", "BackRing"])
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ChaseHeart"]
-mesh = ExtResource("4_20ugn")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseHeart"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseHeart" unique_id=161743610]
 shape = SubResource("SphereShape3D_w3kui")
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="AudioServiceListener" type="Node" parent="ChaseHeart" unique_id=633594324]
+script = ExtResource("24_xkbh0")
+
+[node name="AudioServiceOSC" type="Node" parent="ChaseHeart/AudioServiceListener" unique_id=611683344]
+script = ExtResource("25_vd7vh")
+
+[node name="LightAudioDirector" type="Node" parent="ChaseHeart" unique_id=157627910]
+script = ExtResource("26_light_audio_director")
+osc_receiver_path = NodePath("AudioServiceListener/AudioServiceOSC")
+party_light_root = NodePath("LightController")
+ring_root = NodePath("LightController")
+strobe_path = NodePath("LightController/Strobe")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="ChaseHeart" unique_id=817003334]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0.1)
+material = ExtResource("4_pj518")
+script = ExtResource("24_pe2g8")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1855969391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_ue1jw")
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1408126540]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=504986222]
 shape = SubResource("SphereShape3D_rm6c6")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
-
-[node name="TrackPoint1" type="Node3D" parent="."]
+[node name="TrackPoint1" type="Node3D" parent="." unique_id=815693444]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7)
 script = ExtResource("9_sh5jk")
 
-[node name="PivotPoint" type="Area3D" parent="TrackPoint1" groups=["track_pivot"]]
+[node name="PivotPoint" type="Area3D" parent="TrackPoint1" unique_id=1361942690 groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/PivotPoint"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/PivotPoint" unique_id=703073822]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint1"]
+[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint1" unique_id=1471802478]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/EdgePointXAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/EdgePointXAxis" unique_id=1477006773]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint1"]
+[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint1" unique_id=1453402591]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/EdgePointYAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/EdgePointYAxis" unique_id=1316970115]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint1"]
+[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint1" unique_id=882504027]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.5)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/EdgePointZAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint1/EdgePointZAxis" unique_id=1080215286]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="TrackPoint2" type="Node3D" parent="."]
+[node name="TrackPoint2" type="Node3D" parent="." unique_id=418900548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 7)
 script = ExtResource("9_sh5jk")
 
-[node name="PivotPoint" type="Area3D" parent="TrackPoint2" groups=["track_pivot"]]
+[node name="PivotPoint" type="Area3D" parent="TrackPoint2" unique_id=1169655500 groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint2/PivotPoint"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint2/PivotPoint" unique_id=786534837]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint2"]
+[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint2" unique_id=1438402437]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint2/EdgePointXAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint2/EdgePointXAxis" unique_id=2069881607]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint2"]
+[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint2" unique_id=1422286569]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint2/EdgePointYAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint2/EdgePointYAxis" unique_id=582536772]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint2"]
+[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint2" unique_id=1496880938]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.5)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint2/EdgePointZAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint2/EdgePointZAxis" unique_id=1854934018]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="TrackPoint3" type="Node3D" parent="."]
+[node name="TrackPoint3" type="Node3D" parent="." unique_id=198321978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -27)
 script = ExtResource("9_sh5jk")
 
-[node name="PivotPoint" type="Area3D" parent="TrackPoint3" groups=["track_pivot"]]
+[node name="PivotPoint" type="Area3D" parent="TrackPoint3" unique_id=1007284546 groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint3/PivotPoint"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint3/PivotPoint" unique_id=320342991]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint3"]
+[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint3" unique_id=1384217221]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint3/EdgePointXAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint3/EdgePointXAxis" unique_id=1468167622]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint3"]
+[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint3" unique_id=1399913394]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint3/EdgePointYAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint3/EdgePointYAxis" unique_id=1407246285]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint3"]
+[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint3" unique_id=1798592404]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.5)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint3/EdgePointZAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint3/EdgePointZAxis" unique_id=778765899]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="TrackPoint4" type="Node3D" parent="."]
+[node name="TrackPoint4" type="Node3D" parent="." unique_id=1879306917]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, -27)
 script = ExtResource("9_sh5jk")
 
-[node name="PivotPoint" type="Area3D" parent="TrackPoint4" groups=["track_pivot"]]
+[node name="PivotPoint" type="Area3D" parent="TrackPoint4" unique_id=118092349 groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint4/PivotPoint"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint4/PivotPoint" unique_id=736547617]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint4"]
+[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint4" unique_id=559125247]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint4/EdgePointXAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint4/EdgePointXAxis" unique_id=520755825]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint4"]
+[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint4" unique_id=582954493]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint4/EdgePointYAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint4/EdgePointYAxis" unique_id=403907724]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint4"]
+[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint4" unique_id=1852110222]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.5)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint4/EdgePointZAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint4/EdgePointZAxis" unique_id=1806578201]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="TrackPoint5" type="Node3D" parent="."]
+[node name="TrackPoint5" type="Node3D" parent="." unique_id=331554560]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2, 7)
 script = ExtResource("9_sh5jk")
 
-[node name="PivotPoint" type="Area3D" parent="TrackPoint5" groups=["track_pivot"]]
+[node name="PivotPoint" type="Area3D" parent="TrackPoint5" unique_id=1495397867 groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint5/PivotPoint"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint5/PivotPoint" unique_id=1216251140]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint5"]
+[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint5" unique_id=70305628]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.5, 0, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint5/EdgePointXAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint5/EdgePointXAxis" unique_id=621023043]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint5"]
+[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint5" unique_id=1861367386]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint5/EdgePointYAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint5/EdgePointYAxis" unique_id=1592234805]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint5"]
+[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint5" unique_id=1912687937]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.5)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint5/EdgePointZAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint5/EdgePointZAxis" unique_id=2033404911]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="TrackPoint6" type="Node3D" parent="."]
+[node name="TrackPoint6" type="Node3D" parent="." unique_id=334647998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 36, 7)
 script = ExtResource("9_sh5jk")
 
-[node name="PivotPoint" type="Area3D" parent="TrackPoint6" groups=["track_pivot"]]
+[node name="PivotPoint" type="Area3D" parent="TrackPoint6" unique_id=361806090 groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint6/PivotPoint"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint6/PivotPoint" unique_id=1461206924]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint6"]
+[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint6" unique_id=1480981275]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.5, 0, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint6/EdgePointXAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint6/EdgePointXAxis" unique_id=1529488984]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint6"]
+[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint6" unique_id=1660318651]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint6/EdgePointYAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint6/EdgePointYAxis" unique_id=875688934]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint6"]
+[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint6" unique_id=1121569529]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.5)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint6/EdgePointZAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint6/EdgePointZAxis" unique_id=43463383]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="TrackPoint7" type="Node3D" parent="."]
+[node name="TrackPoint7" type="Node3D" parent="." unique_id=434974402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 2, -27)
 script = ExtResource("9_sh5jk")
 
-[node name="PivotPoint" type="Area3D" parent="TrackPoint7" groups=["track_pivot"]]
+[node name="PivotPoint" type="Area3D" parent="TrackPoint7" unique_id=1069990352 groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint7/PivotPoint"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint7/PivotPoint" unique_id=1413290535]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint7"]
+[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint7" unique_id=140614167]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.5, 0, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint7/EdgePointXAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint7/EdgePointXAxis" unique_id=1214871804]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint7"]
+[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint7" unique_id=1833305586]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint7/EdgePointYAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint7/EdgePointYAxis" unique_id=327069819]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint7"]
+[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint7" unique_id=1412918951]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.5)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint7/EdgePointZAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint7/EdgePointZAxis" unique_id=1955675404]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="TrackPoint8" type="Node3D" parent="."]
+[node name="TrackPoint8" type="Node3D" parent="." unique_id=983072517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 36, -27)
 script = ExtResource("9_sh5jk")
 
-[node name="PivotPoint" type="Area3D" parent="TrackPoint8" groups=["track_pivot"]]
+[node name="PivotPoint" type="Area3D" parent="TrackPoint8" unique_id=383202763 groups=["track_pivot"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/PivotPoint"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/PivotPoint" unique_id=1812443553]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint8"]
+[node name="EdgePointXAxis" type="Area3D" parent="TrackPoint8" unique_id=1350033427]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.5, 0, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/EdgePointXAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/EdgePointXAxis" unique_id=45491762]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint8"]
+[node name="EdgePointYAxis" type="Area3D" parent="TrackPoint8" unique_id=699912398]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/EdgePointYAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/EdgePointYAxis" unique_id=2064328231]
 shape = SubResource("SphereShape3D_ue1jw")
 
-[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint8"]
+[node name="EdgePointZAxis" type="Area3D" parent="TrackPoint8" unique_id=1350262866]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.5)
 script = ExtResource("2_eacex")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/EdgePointZAxis"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrackPoint8/EdgePointZAxis" unique_id=917071121]
 shape = SubResource("SphereShape3D_ue1jw")
+
+[node name="Corner1" type="Node3D" parent="." unique_id=1980483354]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, 7)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner1" unique_id=746389531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner1" unique_id=2143062813]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner1" unique_id=1579409681]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner1" unique_id=1604098600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner1" unique_id=789434901]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner1" unique_id=1067400358]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner2" type="Node3D" parent="." unique_id=259445903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -27)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner2" unique_id=2072432713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner2" unique_id=442463710]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner2" unique_id=1929656078]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner2" unique_id=1624245762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner2" unique_id=1183128469]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner2" unique_id=994115973]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner3" type="Node3D" parent="." unique_id=1207220003]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 34, 2, 7)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner3" unique_id=542380692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner3" unique_id=907544711]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner3" unique_id=659855189]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner3" unique_id=537910884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner3" unique_id=397425383]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner3" unique_id=1211812199]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner4" type="Node3D" parent="." unique_id=1032125564]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 34, 2, -27)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner4" unique_id=1441741109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner4" unique_id=983067603]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner4" unique_id=317196803]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner4" unique_id=997121866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner4" unique_id=1101619395]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner4" unique_id=1248119699]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner5" type="Node3D" parent="." unique_id=53217774]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 36, 7)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner5" unique_id=516849249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner5" unique_id=380491750]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner5" unique_id=1650518067]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner5" unique_id=651866748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner5" unique_id=1156883327]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner5" unique_id=132672018]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner6" type="Node3D" parent="." unique_id=1459949866]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 36, -27)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner6" unique_id=1400531685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner6" unique_id=1035973546]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner6" unique_id=1000772536]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner6" unique_id=1559983012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner6" unique_id=1691242213]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner6" unique_id=1733192643]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner7" type="Node3D" parent="." unique_id=896787504]
+transform = Transform3D(-1, 8.742278e-08, 4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, -8.742278e-08, -1, 1.9106855e-15, 34, 36, 7)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner7" unique_id=181702919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner7" unique_id=1152059224]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner7" unique_id=792958061]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner7" unique_id=393555966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner7" unique_id=831745155]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner7" unique_id=1618962369]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="Corner8" type="Node3D" parent="." unique_id=606060667]
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, -1, 1, -4.371139e-08, -4.371139e-08, 34, 36, -27)
+
+[node name="BlueEye" type="CSGBox3D" parent="Corner8" unique_id=1551487186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_v4qe2")
+
+[node name="GreenEye" type="CSGBox3D" parent="Corner8" unique_id=298580910]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.9999999)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_dv5t0")
+
+[node name="RedEye" type="CSGBox3D" parent="Corner8" unique_id=1014001231]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -2, 0, 0)
+size = Vector3(4, 0.2, 4)
+material = SubResource("StandardMaterial3D_pe2g8")
+
+[node name="BlueEyeOuterWall" type="CSGBox3D" parent="Corner8" unique_id=2045618739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="GreenEyeOuterWall" type="CSGBox3D" parent="Corner8" unique_id=1039378626]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -3)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
+
+[node name="RedEyeOuterWall" type="CSGBox3D" parent="Corner8" unique_id=350111265]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3, 0, 0)
+size = Vector3(6, 0.2, 6)
+material = ExtResource("4_pj518")
 
 [connection signal="body_entered" from="TrackPoint1/EdgePointXAxis" to="TrackPoint1/EdgePointXAxis" method="_on_body_entered"]
 [connection signal="body_exited" from="TrackPoint1/EdgePointXAxis" to="TrackPoint1/EdgePointXAxis" method="_on_body_exited"]

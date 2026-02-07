@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://q7sc803fitlm"]
+
+[ext_resource type="Shader" uid="uid://bi74rxutmj4ai" path="res://outerrightWall.gdshader" id="1_tsq2u"]
+[ext_resource type="Texture2D" uid="uid://cj1dqpmngar6f" path="res://textures/image/tessellating_eyes_texture.png" id="2_uaf4b"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_tsq2u")
+shader_parameter/tile_tex = ExtResource("2_uaf4b")
+shader_parameter/tiles_per_meter = 0.35
+shader_parameter/seed = 0.0
