@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 	pass
 
 func store_target(target: Area3D) -> void:
-	print("Storing direction", target.name)
 	stored_target = target
 
 func release_target() -> void:

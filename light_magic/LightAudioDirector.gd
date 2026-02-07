@@ -14,8 +14,19 @@ enum SceneId { BASS_GRAVITY, MID_BLOOM, TREBLE_SPARK, MIX_MADNESS }
 @export var strobe_path: NodePath
 
 @export var beats_per_scene: int = 32
-@export var diagnostics_enabled: bool = true
+@export var diagnostics_enabled: bool = false
 @export var diagnostics_label_path: NodePath
+@export_enum("None", "JumpForward", "JumpBack", "SpreadOut") var ring_z_pulse_action: int = 0
+@export var ring_z_jump_distance: float = 0.6
+@export var ring_z_spread_distance: float = 0.6
+@export var ring_z_out_time: float = 0.08
+@export var ring_z_return_time: float = 0.18
+@export var eye_sphere_path: NodePath = NodePath("../CSGSphere3D")
+@export var party_light_energy_gain: float = 1.2
+@export var party_light_contrast: float = 1.6
+@export var party_light_contrast_pivot: float = 0.6
+@export var party_light_impulse_boost: float = 2.0
+@export var party_light_impulse_decay: float = 8.0
 
 # Endpoints needed for the 4 non-triggered scenes
 const REQUIRED_ENDPOINTS: Array[String] = [
@@ -50,11 +61,15 @@ var _ring_angle: float = 0.0
 var _mix_weights: Array[Vector3] = []
 var _diag_label: Label
 var _last_energy_value: float = 0.0
-var _last_z_sweep: float = 0.0
 var _osc_status: String = "OSC: unknown"
 var _targets_ready: bool = false
 var _strobe_status: String = "Strobe: unknown"
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var _last_pulse: bool = false
+var _ring_action_index: int = 0
+var _middle_ring_dir: float = 1.0
+var _eye_sphere: Node
+var _party_light_impulse: float = 0.0
 
 func _ready() -> void:
 	if diagnostics_enabled:
@@ -73,6 +88,8 @@ func _ready() -> void:
 		if _osc_receiver.has_method("subscribe_to_endpoint"):
 			for endpoint in REQUIRED_ENDPOINTS:
 				_osc_receiver.subscribe_to_endpoint(endpoint)
+
+	_eye_sphere = get_node_or_null(eye_sphere_path)
 
 	call_deferred("_refresh_targets")
 
@@ -100,8 +117,16 @@ func _process(delta: float) -> void:
 	var pulse: bool = _osc_receiver.get_bool("/audio/pulse")
 	var treble_presence: bool = _osc_receiver.get_bool("/audio/band_presence_high_2")
 
+	var pulse_edge: bool = pulse and not _last_pulse
+	_last_pulse = pulse
+
+	if pulse_edge:
+		_party_light_impulse = party_light_impulse_boost
+	_party_light_impulse = max(0.0, _party_light_impulse - (party_light_impulse_decay * delta))
+
 	_apply_scene_lighting(bass, mid, treble, total_energy, movement, beat_id)
-	_apply_ring_rotation(bpm, pulse, delta)
+	_apply_ring_z_motion(pulse_edge)
+	_apply_ring_rotation(bpm, delta)
 	_apply_strobe(pulse, treble_presence)
 
 	if diagnostics_enabled:
@@ -136,7 +161,12 @@ func _advance_scene() -> void:
 	_set_scene(SceneId.values()[next_scene])
 
 func _set_scene(scene_id: SceneId) -> void:
+	var previous_scene: SceneId = _current_scene
 	_current_scene = scene_id
+
+	if previous_scene != _current_scene:
+		_middle_ring_dir *= -1.0
+		_advance_ring_action()
 
 	if _current_scene == SceneId.MIX_MADNESS:
 		_mix_weights = [WEIGHT_BASS, WEIGHT_MID, WEIGHT_TREBLE]
@@ -144,8 +174,14 @@ func _set_scene(scene_id: SceneId) -> void:
 
 	_set_strobe_random_color()
 
+func _advance_ring_action() -> void:
+	var actions: Array[int] = [1, 2, 3] # JumpForward, JumpBack, SpreadOut
+	ring_z_pulse_action = actions[_ring_action_index % actions.size()]
+	_ring_action_index += 1
+
 func _apply_scene_lighting(bass: float, mid: float, treble: float, total_energy: float, movement: float, beat_id: int) -> void:
 	var weight: Vector3 = _scene_weight(_current_scene)
+	var captured_diagnostics: bool = false
 
 	for light_node in _party_lights:
 		if not light_node.has_method("set_light_energy"):
@@ -153,28 +189,19 @@ func _apply_scene_lighting(bass: float, mid: float, treble: float, total_energy:
 
 		var energy_value: float = (bass * weight.x) + (mid * weight.y) + (treble * weight.z)
 		energy_value += movement * 0.25
+		energy_value *= party_light_energy_gain
+		energy_value = _apply_contrast(energy_value, party_light_contrast_pivot, party_light_contrast)
+		energy_value += _party_light_impulse
 		light_node.set_light_energy(energy_value)
-
-		var z_sweep: float = 0.0
-		match _current_scene:
-			SceneId.BASS_GRAVITY:
-				z_sweep = clamp((bass * 2.5) - 1.2, -1.0, 1.0)
-			SceneId.MID_BLOOM:
-				z_sweep = sin(float(beat_id) * 0.35)
-			SceneId.TREBLE_SPARK:
-				z_sweep = clamp((treble * 2.0) - 1.0, -1.0, 1.0)
-			SceneId.MIX_MADNESS:
-				z_sweep = _mix_dominant_z_sweep(bass, mid, treble, beat_id)
-		light_node.set_z_sweep(z_sweep)
 
 		# Mix Madness uses existing light colors for grouping only (no runtime color changes).
 
 		# Capture values from the first light for diagnostics.
-		if _last_energy_value == 0.0 and _last_z_sweep == 0.0:
+		if not captured_diagnostics:
 			_last_energy_value = energy_value
-			_last_z_sweep = z_sweep
+			captured_diagnostics = true
 
-func _apply_ring_rotation(bpm: float, pulse: bool, delta: float) -> void:
+func _apply_ring_rotation(bpm: float, delta: float) -> void:
 	if _rings.is_empty():
 		return
 
@@ -190,12 +217,50 @@ func _apply_ring_rotation(bpm: float, pulse: bool, delta: float) -> void:
 			speed = 0.30
 
 	_ring_angle += (bpm / 60.0) * speed * delta
-	if pulse:
-		_ring_angle += 0.15
 
+	var middle_index: int = _rings.size() / 2
+	for i in range(_rings.size()):
+		var ring_node: Node = _rings[i]
+		if ring_node == null or not ring_node.has_method("set_ring_rotation"):
+			continue
+		var angle: float = _ring_angle
+		if i == middle_index:
+			angle *= _middle_ring_dir
+		ring_node.set_ring_rotation(angle)
+
+func _apply_ring_z_motion(pulse_edge: bool) -> void:
+	if _rings.is_empty():
+		return
+	if not pulse_edge:
+		return
+
+	match ring_z_pulse_action:
+		1: # JumpForward
+			_pulse_rings_z(ring_z_jump_distance)
+		2: # JumpBack
+			_pulse_rings_z(-ring_z_jump_distance)
+		3: # SpreadOut
+			_spread_rings_z(ring_z_spread_distance)
+		_:
+			pass
+
+func _pulse_rings_z(offset: float) -> void:
 	for ring_node in _rings:
-		if ring_node != null and ring_node.has_method("set_ring_rotation"):
-			ring_node.set_ring_rotation(_ring_angle)
+		if ring_node != null and ring_node.has_method("pulse_z"):
+			ring_node.pulse_z(offset, ring_z_out_time, ring_z_return_time)
+
+func _spread_rings_z(distance: float) -> void:
+	var count: int = _rings.size()
+	if count == 0:
+		return
+
+	var center_index: float = (float(count - 1)) / 2.0
+	for i in range(count):
+		var ring_node: Node = _rings[i]
+		if ring_node == null or not ring_node.has_method("pulse_z"):
+			continue
+		var offset: float = (float(i) - center_index) * distance
+		ring_node.pulse_z(offset, ring_z_out_time, ring_z_return_time)
 
 func _apply_strobe(pulse: bool, treble_presence: bool) -> void:
 	if _strobe == null:
@@ -292,6 +357,9 @@ func _mix_dominant_z_sweep(bass: float, mid: float, treble: float, beat_id: int)
 
 	return 0.0
 
+func _apply_contrast(value: float, pivot: float, amount: float) -> float:
+	return (value - pivot) * amount + pivot
+
 func _find_party_lights() -> Array[Node]:
 	if party_light_root != NodePath("."):
 		var root_node: Node = get_node_or_null(party_light_root)
@@ -385,9 +453,17 @@ func _update_diagnostics(
 		return
 
 	var scene_name := _scene_name(_current_scene)
+	var ring_action := _ring_z_action_name(ring_z_pulse_action)
 	var light_count: int = _party_lights.size()
 	var ring_count: int = _rings.size()
 	var strobe_present: bool = _strobe != null
+	var eye_spin_threshold: float = 0.0
+	if _eye_sphere == null:
+		_eye_sphere = get_node_or_null(eye_sphere_path)
+	if _eye_sphere != null and _eye_sphere.has_method("get"):
+		var maybe_threshold: Variant = _eye_sphere.get("strong_energy_threshold")
+		if typeof(maybe_threshold) in [TYPE_FLOAT, TYPE_INT]:
+			eye_spin_threshold = float(maybe_threshold)
 
 	var info := ""
 	info += "%s\n" % _osc_status
@@ -397,9 +473,11 @@ func _update_diagnostics(
 	info += "BPM: %.1f | Beat ID: %d\n" % [bpm, beat_id]
 	info += "Bass/Mid/Treble: %.2f / %.2f / %.2f\n" % [bass, mid, treble]
 	info += "Total Energy: %.2f | Movement: %.2f\n" % [total_energy, movement]
+	info += "Overall Energy: %.2f | Eye Spin Threshold: %.2f\n" % [total_energy, eye_spin_threshold]
 	info += "Applied -> PartyLight.set_light_energy: %.2f\n" % _last_energy_value
-	info += "Applied -> PartyLight.set_z_sweep: %.2f\n" % _last_z_sweep
+	info += "Ring Z action: %s\n" % ring_action
 	info += "Ring rotation -> PartyLightRing.set_ring_rotation (shared angle)\n"
+	info += "Ring Z motion -> PartyLightRing.pulse_z (pulse trigger)\n"
 	info += "Strobe -> Strobe.pulse on beat/pulse\n"
 
 	_diag_label.text = info
@@ -415,3 +493,14 @@ func _scene_name(scene_id: SceneId) -> String:
 		SceneId.MIX_MADNESS:
 			return "Mix Madness"
 	return "Unknown"
+
+func _ring_z_action_name(action_id: int) -> String:
+	match action_id:
+		1:
+			return "JumpForward"
+		2:
+			return "JumpBack"
+		3:
+			return "SpreadOut"
+		_:
+			return "None"

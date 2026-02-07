@@ -87,7 +87,7 @@ func pulse(peak_energy: float, duration_sec: float) -> void:
 		push_warning("StrobeController: No StrobeLight children found.")
 		return
 
-	print("StrobeController.pulse peak=", peak_energy, " duration=", duration_sec)
+	#print("StrobeController.pulse peak=", peak_energy, " duration=", duration_sec)
 
 	stop_strobe()
 	_cancel_pulse()

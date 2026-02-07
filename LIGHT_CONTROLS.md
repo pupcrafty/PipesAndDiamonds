@@ -6,15 +6,11 @@ This document summarizes the controls exposed on the light-related scripts in th
 Scripted light type: `SpotLight3D`
 
 Inspector (exported) controls:
-- `sweep_speed` (float): Authoring-time sweep speed value (not currently used in the script logic).
 - `min_energy` (float): Lower clamp for light intensity.
 - `max_energy` (float): Upper clamp for light intensity.
 - `light_groups` (Array[String]): Tagging/grouping metadata for the light.
 
 Runtime controls:
-- `set_z_sweep(value: float)`: Sweeps the light orientation along world Z.
-  - `value` is clamped to `[-1, 1]`.
-  - `1` points to world forward (-Z), `0` uses the authored rotation, `-1` points to world back (+Z).
 - `set_light_energy(energy: float)`: Sets `light_energy`, clamped to `[min_energy, max_energy]`.
 
 ## RingRotator (`PartyLightRing.gd`)
@@ -25,6 +21,7 @@ Inspector (exported) controls:
 
 Runtime controls:
 - `set_ring_rotation(angle_radians: float)`: Sets the ring rotation around its local Y axis.
+- `pulse_z(offset: float, out_time: float, return_time: float)`: Moves along authored local Z, then returns to center.
 
 ## StrobeController (`Strobe.gd`)
 Scripted controller type: `Node3D` that drives child `StrobeLight` nodes.
